@@ -9,7 +9,6 @@ public class Utente {
     private String cognome;
     private String email;
     private String password;
-    private  String firebaseKey;
 
     public Utente(String nome, String cognome, String email, String password) {
         this.nome = nome;
@@ -18,13 +17,6 @@ public class Utente {
         this.password = password;
     }
 
-    public String getFirebaseKey() {
-        return firebaseKey;
-    }
-
-    public void setFirebaseKey(String firebaseKey) {
-        this.firebaseKey = firebaseKey;
-    }
 
     public String getNome() {
         return nome;
