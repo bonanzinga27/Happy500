@@ -4,6 +4,7 @@
 /dist
 /tmp
 
+/.idea
 
 # IDEs and editors
 /.idea
