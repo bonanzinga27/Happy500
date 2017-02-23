@@ -8,12 +8,14 @@ import { MaterialModule } from '@angular/material';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
+import { FormPraticheComponent } from './form-pratiche/form-pratiche.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    SignupComponent
+    SignupComponent,
+    FormPraticheComponent
   ],
   imports: [
     BrowserModule,
