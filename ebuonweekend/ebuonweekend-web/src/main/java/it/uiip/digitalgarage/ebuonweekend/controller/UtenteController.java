@@ -11,13 +11,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import java.util.ArrayList;
 import java.util.List;
 
-@CrossOrigin(origins = "http://localhost:4200")
 @RestController
 public class UtenteController{
 	
 	@Autowired
 	UtenteService utenteService;
-	
+
+	@CrossOrigin(origins = "http://localhost:4200")
 	@RequestMapping("/register")
 	public GenericReturn<Utente> register(@RequestParam(value = "email", defaultValue = "undefined") String email,
 										  @RequestParam(value = "pass", defaultValue="undefined") String password){
@@ -45,6 +45,7 @@ public class UtenteController{
 		}
 	}
 
+	@CrossOrigin(origins = "http://localhost:4200")
 	@RequestMapping("/login")
 	public GenericReturn<Utente> login(@RequestParam(value = "email", defaultValue = "undefined") String email,
 									   @RequestParam(value = "pass", defaultValue = "undefined") String pass){
