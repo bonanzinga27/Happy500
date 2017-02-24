@@ -21,6 +21,7 @@ const appRoutes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
   { path: 'login',  component: LoginComponent },
   { path: 'signup', component: SignupComponent },
+  { path: 'pratica',   component: FormPraticheComponent },
   { path: 'home',   component: CardContainerComponent },
   { path: '**', redirectTo: '/login' },
 ];

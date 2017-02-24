@@ -9,7 +9,7 @@ export class TabsService {
     {title: 'Item title3'},
     {title: 'Item title4'},
   ];
-  
+
   constructor() { }
 
 }
