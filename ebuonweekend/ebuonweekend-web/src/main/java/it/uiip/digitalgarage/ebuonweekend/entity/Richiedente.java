@@ -15,13 +15,13 @@ public class Richiedente {
     private String cittaResidenza;
     private String provinciaResidenza;
     private String indirizzoResidenza;
-    private Long idUtente;
     private String emailRichiedente;
     private String cartaIdentitaPath;
     private String codFiscPath;
     private String sesso;
+    private String emailUtente;
 
-    public Richiedente(Long id, String nome, String cognome, String codFisc, LocalDate dataNascita, String cittaNascita, String provinciaNascita, String telefono, String cittaResidenza, String provinciaResidenza, String indirizzoResidenza, Long idUtente, String emailRichiedente, String cartaIdentitaPath, String codFiscPath, String sesso) {
+    public Richiedente(Long id, String nome, String cognome, String codFisc, LocalDate dataNascita, String cittaNascita, String provinciaNascita, String telefono, String cittaResidenza, String provinciaResidenza, String indirizzoResidenza, String emailUtente, String emailRichiedente, String cartaIdentitaPath, String codFiscPath, String sesso) {
         this.id = id;
         this.nome = nome;
         this.cognome = cognome;
@@ -33,7 +33,7 @@ public class Richiedente {
         this.cittaResidenza = cittaResidenza;
         this.provinciaResidenza = provinciaResidenza;
         this.indirizzoResidenza = indirizzoResidenza;
-        this.idUtente = idUtente;
+        this.emailUtente = emailUtente;
         this.emailRichiedente = emailRichiedente;
         this.cartaIdentitaPath = cartaIdentitaPath;
         this.codFiscPath = codFiscPath;
@@ -122,14 +122,6 @@ public class Richiedente {
         this.indirizzoResidenza = indirizzoResidenza;
     }
 
-    public Long getIdUtente() {
-        return idUtente;
-    }
-
-    public void setIdUtente(Long idUtente) {
-        this.idUtente = idUtente;
-    }
-
     public String getEmailRichiedente() {
         return emailRichiedente;
     }
@@ -168,5 +160,13 @@ public class Richiedente {
 
     public void setSesso(String sesso) {
         this.sesso = sesso;
+    }
+
+    public String getEmailUtente() {
+        return emailUtente;
+    }
+
+    public void setEmailUtente(String emailUtente) {
+        this.emailUtente = emailUtente;
     }
 }
