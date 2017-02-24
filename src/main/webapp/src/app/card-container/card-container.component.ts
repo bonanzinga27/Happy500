@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {TypesFundingService} from "../types-funding.service";
 
 @Component({
   selector: 'app-card-container',
@@ -7,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CardContainerComponent implements OnInit {
 
-  constructor() { }
+  constructor(private funding: TypesFundingService) { }
 
   ngOnInit() {
   }
