@@ -1,9 +1,5 @@
 package it.uiip.digitalgarage.ebuonweekend.controller;
 
-/**
- * Created by gvasa on 23/02/2017.
- */
-
 
 import it.uiip.digitalgarage.ebuonweekend.entity.GenericReturn;
 import it.uiip.digitalgarage.ebuonweekend.entity.Richiedente;
@@ -13,18 +9,22 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
+
+@RestController
 public class RichiedenteController {
+
     @Autowired
     RichiedenteService richiedenteService;
 
-    //METODO PER RITORNARE UN UTENTE
     @CrossOrigin(origins = "http://localhost:4200")
     @RequestMapping("/getRichiedente")
     public GenericReturn<Richiedente> getUser(@RequestParam(value = "id", defaultValue = "@unregistered") Long id) {
 
         return new GenericReturn<>(richiedenteService.selectByID(id),null);
     }
+
 
     @CrossOrigin(origins = "http://localhost:4200")
     @RequestMapping("/editRichiedente")
@@ -42,13 +42,13 @@ public class RichiedenteController {
                                            @RequestParam(value = "idUtente", defaultValue = "undefined") Integer idUtente,
                                            @RequestParam(value = "emailRichiedente", defaultValue = "undefined") String emailRichiedente,
                                            @RequestParam(value = "cartaIdentitaPath", defaultValue = "undefined") String cartaIdentitaPath,
-                                           @RequestParam(value = "codFiscPath", defaultValue = "undefined") String codFiscPath
-                                           ){
+                                           @RequestParam(value = "codFiscPath", defaultValue = "undefined") String codFiscPath,
+                                           @RequestParam(value = "sesso", defaultValue = "undefined") String sesso){
 
         ///ebuonweekend-web/editUser?nickName=leo&firstName=Leonardo&lastName=Galati&telephone=3483401922&statoUtente=montagna&profilePicture=C:/E-Buonweekend-Uploads/image_4.jpg
 
 
-            Richiedente richiedente = new Richiedente(0l, nome, cognome, codFisc, DateUtil.parse(dataNascita), cittaNascita, provinciaNascita, telefono, cittaResidenza, provinciaResidenza, indirizzoResidenza, 0l, emailRichiedente,cartaIdentitaPath,codFiscPath);
+            Richiedente richiedente = new Richiedente(0l, nome, cognome, codFisc, DateUtil.parse(dataNascita), cittaNascita, provinciaNascita, telefono, cittaResidenza, provinciaResidenza, indirizzoResidenza, 0l, emailRichiedente,cartaIdentitaPath,codFiscPath, sesso);
             return new GenericReturn<Boolean>(richiedenteService.update(richiedente,email));
 
 
