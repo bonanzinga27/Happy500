@@ -1,37 +1,24 @@
 package entity;
 
-/**
- * Created by gvasa on 23/02/2017.
- */
+
 public class Utente {
 
-    private String nome;
-    private String cognome;
+    private long id;
     private String email;
     private String password;
 
-    public Utente(String nome, String cognome, String email, String password) {
-        this.nome = nome;
-        this.cognome = cognome;
+    public Utente(long id, String email, String password) {
+        this.id = id;
         this.email = email;
         this.password = password;
     }
 
-
-    public String getNome() {
-        return nome;
+    public long getId() {
+        return id;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
-    public String getCognome() {
-        return cognome;
-    }
-
-    public void setCognome(String cognome) {
-        this.cognome = cognome;
+    public void setId(long id) {
+        this.id = id;
     }
 
     public String getEmail() {
@@ -48,13 +35,5 @@ public class Utente {
 
     public void setPassword(String password) {
         this.password = password;
-    }
-
-    public void wrapperUpdater(Utente utente){
-        utente.setNome(nome);
-        utente.setCognome(cognome);
-        utente.setEmail(email);
-        utente.setPassword(password);
-
     }
 }

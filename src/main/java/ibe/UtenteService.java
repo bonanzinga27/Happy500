@@ -1,7 +1,11 @@
 package ibe;
 
-/**
- * Created by gvasa on 23/02/2017.
- */
-public class UtenteService {
+import entity.Utente;
+
+public interface UtenteService {
+	
+	boolean insert(Utente user);
+	
+	
+	
 }
