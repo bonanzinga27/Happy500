@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { RegisterService } from '../register.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Cookie } from 'ng2-cookies/ng2-cookies';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-signup',
@@ -16,7 +18,8 @@ export class SignupComponent implements OnInit {
   });
 
   constructor(
-    private registerService:RegisterService
+    private registerService:RegisterService,
+    private router:Router
   ) { }
 
   risp = {};
@@ -27,8 +30,13 @@ export class SignupComponent implements OnInit {
       .subscribe(risposta => {
           if (risposta.returnObject != null){
             console.log(risposta.returnObject.email);
+            Cookie.set('email', risposta.returnObject.email, 1 /*days from now*/);
+            Cookie.set('password', this.signUpForm.value.password, 1 );
+            alert("Registrazione Effettuata");
+            this.router.navigate(['../home']);
           }else{
-            console.log("errore, registrazione fallita");
+            console.log("errore, signup fallita");
+            alert("Errore, ripeti la registrazione");
           }
       });
     console.log(this.risp);

@@ -11,24 +11,21 @@ export class CardContainerComponent implements OnInit {
 
   list = [];
 
-  constructor(private funding: TypesFundingService) {
+  constructor(private fundingService: TypesFundingService) {
     this.getFundingList();
   }
 
   getFundingList() {
-    /*this.funding.getList().subscribe(data => this.list = data);
-    this.funding.getList().subscribe(
-      data => {
-        // refresh the list
-        this.list = data;
-        return true;
-      },
-      error => {
-        console.error("Errore nella getList dei tipi di finanziamento!");
-        return Observable.throw(error);
-      }
-    );*/
-    this.list = this.funding.getList();
+
+    this.fundingService.getList()
+      .subscribe(risposta => {
+        if (risposta.returnObject != null){
+          console.log(risposta.returnObject.email);
+          this.list = risposta.returnObject;
+        }else{
+          console.log("errore, caricamento tipologie finanziamenti");
+        }
+      });
   }
 
   ngOnInit() {

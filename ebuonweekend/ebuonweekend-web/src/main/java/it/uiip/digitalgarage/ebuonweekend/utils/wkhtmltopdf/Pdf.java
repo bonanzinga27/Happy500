@@ -30,6 +30,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.UUID;
 import org.apache.commons.io.FileUtils;
+import org.apache.commons.lang3.StringUtils;
 
 public class Pdf implements PdfService {
     private static final String STDINOUT = "-";

@@ -1,5 +1,7 @@
 package it.uiip.digitalgarage.ebuonweekend.controller;
 
+import it.uiip.digitalgarage.ebuonweekend.utils.wkhtmltopdf.Pdf;
+import it.uiip.digitalgarage.ebuonweekend.utils.wkhtmltopdf.page.PageType;
 import org.springframework.web.bind.annotation.*;
 
 import it.uiip.digitalgarage.ebuonweekend.entity.GenericReturn;
@@ -8,6 +10,8 @@ import it.uiip.digitalgarage.ebuonweekend.ibe.UtenteService;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,10 +25,19 @@ public class UtenteController{
 	@RequestMapping("/register")
 	public GenericReturn<Utente> register(@RequestParam(value = "email", defaultValue = "undefined") String email,
 										  @RequestParam(value = "pass", defaultValue="undefined") String password){
-		
-		List<String> err = new ArrayList<>();
-		
-		
+		try {
+
+
+		Pdf pdf = new Pdf();
+		pdf.addPage("http://localhost:4200/#jkjkj", PageType.url);
+		// pdf.addToc();
+			pdf.saveAs("C:"+ File.separator+"Users"+ File.separator+"gvasa"+ File.separator+"Desktop"+ File.separator+ "test.pdf");
+		} catch ( IOException | InterruptedException e) {
+			e.printStackTrace();
+		}
+
+			List<String> err = new ArrayList<>();
+
 		if(!email.equals("undefined") && !password.equals("undefined")){
 			
 			

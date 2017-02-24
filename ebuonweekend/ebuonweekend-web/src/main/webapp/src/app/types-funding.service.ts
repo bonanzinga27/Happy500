@@ -11,13 +11,8 @@ export class TypesFundingService {
   ) { }
 
   getList() {
-    /*return this.http.get('http://localhost:8080/getFinanziamenti')
-      .map((res:Response) => res.json());*/
-    return [
-        {nome: "Primo", descrizione: "Descrizioneeeeeeee"},
-        {nome: "Secondo", descrizione: "Descrizioneeeeeeee"},
-        {nome: "Terzo", descrizione: "Descrizioneeeeeeee"},
-    ]
+    return this.http.get('http://localhost:8080/getFinanziamenti')
+      .map((res:Response) => res.json());
   }
 
 }

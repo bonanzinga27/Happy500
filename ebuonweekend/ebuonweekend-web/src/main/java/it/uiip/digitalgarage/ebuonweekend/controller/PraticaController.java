@@ -39,7 +39,7 @@ public class PraticaController{
 
     //API PER PRENDERE DAL DB TUTTI I TIPI DI FINANZIAMENTO POSSIBILI
     @CrossOrigin(origins = "http://localhost:4200")
-    @RequestMapping("/getFinanziamento")
+    @RequestMapping("/getFinanziamenti")
     public GenericReturn<TipoFinanziamento[]> getFinanziamento(){
 
         return new GenericReturn<>(praticaService.getAllTipoFinanziamento());
