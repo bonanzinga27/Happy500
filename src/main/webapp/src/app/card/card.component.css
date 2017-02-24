@@ -1,6 +1,7 @@
 .bg-white{
   background-color: white;
 }
-md-card{
-  width: 200px;
+
+.width-card{
+  width: 20rem;
 }
