@@ -1,17 +1,22 @@
 package it.uiip.digitalgarage.ebuonweekend.be;
 
-
 import it.uiip.digitalgarage.ebuonweekend.entity.Pratica;
 import it.uiip.digitalgarage.ebuonweekend.ibe.PraticaService;
+import it.uiip.digitalgarage.ebuonweekend.idao.PraticaDAO;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
 public class PraticaServiceImpl implements PraticaService {
 
+    @Autowired
+    PraticaDAO praticaDAO;
+
     @Override
     public boolean insert(Pratica p) {
 
+        return praticaDAO.insert(p);
 
-        return false;
+
     }
 }

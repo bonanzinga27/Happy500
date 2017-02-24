@@ -1,14 +1,14 @@
 package it.uiip.digitalgarage.ebuonweekend.controller;
 
+import org.springframework.web.bind.annotation.RestController;
 
 import it.uiip.digitalgarage.ebuonweekend.entity.GenericReturn;
 import it.uiip.digitalgarage.ebuonweekend.entity.Utente;
 import it.uiip.digitalgarage.ebuonweekend.ibe.UtenteService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,8 +18,7 @@ public class UtenteController{
 	
 	@Autowired
 	UtenteService utenteService;
-
-	@CrossOrigin(origins = "http://localhost:4200")
+	
 	@RequestMapping("/register")
 	public GenericReturn<Utente> register(@RequestParam(value = "email", defaultValue = "undefined") String email,
 										  @RequestParam(value = "pass", defaultValue="undefined") String password){
@@ -44,6 +43,20 @@ public class UtenteController{
 		else{
 				err.add("USERNAME O PASSWORD ERRATI");
 				return new GenericReturn<>(null, err);
+		}
+	}
+
+	@RequestMapping("/login")
+	public GenericReturn<Utente> login(@RequestParam(value = "email", defaultValue = "undefined") String email,
+									   @RequestParam(value = "pass", defaultValue = "undefined") String pass){
+
+		Utente u = new Utente(0, email, pass);
+
+		if(utenteService.authentication(u)){
+			return new GenericReturn<>(u);
+		}
+		else{
+			return new GenericReturn<>(null);
 		}
 	}
 	

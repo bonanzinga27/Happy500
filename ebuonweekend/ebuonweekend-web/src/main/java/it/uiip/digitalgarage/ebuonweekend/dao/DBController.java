@@ -17,9 +17,9 @@ public class DBController {
     protected static final String USER = "digitalgarage";
     protected static final String PASS = "digipassword";*/
 
-    protected static final String DB_URL = "jdbc:mysql://localhost:3308/happy500";
+    protected static final String DB_URL = "jdbc:mysql://localhost:3306/happy500";
     protected static final String USER = "root";
-    protected static final String PASS = "pollo";
+    protected static final String PASS = "admin";
 
     protected static Connection conn = null;
     protected static PreparedStatement stmt = null;
