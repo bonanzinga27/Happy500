@@ -1,3 +1,75 @@
-<p>
-  dati-organizzazione works!
-</p>
+<div class="jumbotron">
+  <form>
+    <legend>Dati organizzazione</legend>
+    <div class="form-group denominazione-inline">
+      <label for="denominazione">Denominazione sociale</label>
+      <input type="text" class="form-control" id="denominazione" placeholder="Azienda">
+    </div>
+    <div class="form-group ragione-inline">
+      <label for="ragioneSociale">Ragione sociale</label>
+      <select class="form-control" id="ragioneSociale">
+        <optgroup label="Società di persone">
+          <option>S.a.s.</option>
+          <option>S.S.</option>
+          <option>S.n.c.</option>
+        </optgroup>
+        <optgroup label="Società di capitali">
+          <option>S.r.l.</option>
+          <option>S.r.l.s.</option>
+          <option>S.r.l.u.</option>
+          <option>S.p.a.</option>
+          <option>S.a.p.a.</option>
+        </optgroup>
+      </select>
+    </div>
+    <div class="form-group piva-inline">
+      <label for="piva">Partita IVA</label>
+      <input type="text" class="form-control" id="piva" maxlength="11" minlength="11" placeholder="IVA">
+    </div>
+    <div class="form-group capitale-inline">
+      <label for="piva">Capitale</label>
+      <input type="text" class="form-control" id="capitale" maxlength="12" placeholder="Capitale">
+    </div>
+    <div class="form-group">
+      <label for="email">Email aziendale</label>
+      <input type="email" class="form-control" id="email" placeholder="Email">
+    </div>
+    <br>
+    <!-- Sede legale -->
+    <legend>Sede legale</legend>
+    <div class="form-group stato-inline">
+      <label for="stato">Stato</label>
+      <input type="text" class="form-control" id="stato" placeholder="Stato">
+    </div>
+    <div class="form-group citta-inline">
+      <label for="citta">Citta</label>
+      <input type="text" class="form-control" id="citta" placeholder="Citta">
+    </div>
+    <div class="form-group prov-inline">
+      <label for="provincia">Provincia</label>
+      <input type="text" class="form-control" id="provincia" placeholder="Provincia">
+    </div>
+    <div class="form-group indirizzo-inline">
+      <label for="indirizzo ">Indirizzo</label>
+      <input type="text" class="form-control" id="indirizzo " placeholder="Indirizzo">
+    </div>
+    <br>
+    <legend>Privacy</legend>
+    <p>Acconsenti al trattamento dei dati personali ai sensi del DL 192/168 ex 345/2bis del 1997?</p>
+    <fieldset class="form-group">
+      <div class="form-check">
+        <label class="form-check-label">
+          <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios1" value="option1" checked>
+          Si
+        </label>
+      </div>
+      <div class="form-check">
+        <label class="form-check-label">
+          <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios2" value="option2">
+          No
+        </label>
+      </div>
+    </fieldset>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+</div>
