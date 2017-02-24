@@ -3,89 +3,16 @@
 </div>
 <div class="row">
   <!-- Tab item list -->
-  <div class="col col-sm-4 col col-lg-4 col-md-4 ">
-    <div class="list-group">
-      <a *ngFor="let tab of tabs.tabList" routerLink="tab.path" class="list-group-item">{{tab.title}}</a>
-    </div>
-  </div>
+  <app-item-list>Loading item list...</app-item-list>
   <!-- Progressive bar -->
   <div class="col col-sm-8 col-lg-8 col-md-8">
-    <div class="progress">
+    <!--div class="progress">
       <div class="progress-bar" *ngFor="let tab of tabs.tabList" [style.width]="tab.width">
         <span>{{tab.title}}</span>
       </div>
-    </div>
+    </div-->
     <!-- Pratiche form -->
-    <div class="jumbotron">
-      <form>
-        <legend>Dati anagrafici</legend>
-        <div class="form-group nome-cognome-inline">
-          <label for="first-name">Nome richiedente</label>
-          <input type="text" class="form-control" id="first-name" placeholder="Nome">
-        </div>
-        <div class="form-group nome-cognome-inline">
-          <label for="last-name">Cognome richiedente</label>
-          <input type="text" class="form-control" id="last-name" placeholder="Cognome">
-        </div>
-        <div class="form-group sesso-inline">
-          <label for="sesso">Sesso:</label>
-          <select class="form-control" id="sesso">
-            <option>M</option>
-            <option>F</option>
-          </select>
-        </div>
-        <div class="form-group prov-inline">
-          <label for="provincia">Provincia di nascita</label>
-          <input type="text" class="form-control" id="provincia" maxlength="2" minlength="2" aria-describedby="provinciaHelp" placeholder="Provincia">
-        </div>
-        <div class="form-group citta-inline">
-          <label for="citta">Città di nascita</label>
-          <input type="text" class="form-control" id="citta" placeholder="Città">
-        </div>
-        <div class="form-group">
-          <label for="codice-fiscale">Codice fiscale</label>
-          <input type="text" class="form-control" id="codice-fiscale" minlength="16" maxlength="16" placeholder="Inserisci codice fiscale">
-          <button id="calcolaCF" class="btn btn-primary">Calcola codice fiscale</button>
-          <!--
-          http://webservices.dotnethell.it/codicefiscale.asmx/
-          CalcolaCodiceFiscale?Nome=Andrea&Cognome=Bonanzinga&ComuneNascita=Catania&DataNascita=27/09/1993&Sesso=M
-          -->
-        </div>
-        <legend>Dati personali</legend>
-        <div class="form-group">
-          <label for="indirizzo">Indirizzo di residenza</label>
-          <input type="text" class="form-control" id="indirizzo" placeholder="Indirizzo">
-        </div>
-        <div class="form-group prov-inline">
-          <label for="provinciaRes">Provincia</label>
-          <input type="text" class="form-control" id="provinciaRes" maxlength="2" minlength="2" aria-describedby="provinciaHelp" placeholder="Provincia">
-        </div>
-        <div class="form-group citta-inline">
-          <label for="cittaRes">Città</label>
-          <input type="text" class="form-control" id="cittaRes" placeholder="Città">
-        </div>
-        <div class="form-group">
-          <label for="telefono">Recapito telefonico</label>
-          <input type="text" class="form-control" id="telefono" maxlength="15" placeholder="Telefono">
-        </div>
-        <legend>Privacy</legend>
-        <p>Acconsenti al trattamento dei dati personali ai sensi del DL 192/168 ex 345/2bis del 1997?</p>
-        <fieldset class="form-group">
-          <div class="form-check">
-            <label class="form-check-label">
-              <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios1" value="option1" checked>
-              Si
-            </label>
-          </div>
-          <div class="form-check">
-            <label class="form-check-label">
-              <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios2" value="option2">
-              No
-            </label>
-          </div>
-        </fieldset>
-        <button type="submit" class="btn btn-primary">Submit</button>
-      </form>
-    </div>
+    <app-dati-personali *ngIf="isSelected(tabs.tabList[0].id)"></app-dati-personali>
+    <app-dati-organizzazione *ngIf="isSelected(tabs.tabList[1].id)"></app-dati-organizzazione>
   </div>
 </div>

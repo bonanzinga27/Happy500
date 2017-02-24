@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {TabsService} from "../tabs.service";
 
 @Component({
   selector: 'app-item-list',
@@ -7,7 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ItemListComponent implements OnInit {
 
-  constructor() { }
+  private setTab(currentTab){
+    this.tabs.currentPage = currentTab;
+  }
+  private isSelected(id){
+    return this.tabs.currentPage === id;
+  };
+  constructor(private tabs:TabsService) { }
 
   ngOnInit() {
   }

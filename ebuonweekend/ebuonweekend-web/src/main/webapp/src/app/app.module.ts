@@ -16,6 +16,8 @@ import { ItemListComponent } from './item-list/item-list.component';
 import {TabsService} from "./tabs.service";
 import {TypesFundingService} from "./types-funding.service";
 import {RegisterService} from "./register.service";
+import { DatiPersonaliComponent } from './dati-personali/dati-personali.component';
+import { DatiOrganizzazioneComponent } from './dati-organizzazione/dati-organizzazione.component';
 
 const appRoutes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
@@ -34,7 +36,9 @@ const appRoutes: Routes = [
     FormPraticheComponent,
     CardContainerComponent,
     CardComponent,
-    ItemListComponent
+    ItemListComponent,
+    DatiPersonaliComponent,
+    DatiOrganizzazioneComponent
   ],
   imports: [
     BrowserModule,
