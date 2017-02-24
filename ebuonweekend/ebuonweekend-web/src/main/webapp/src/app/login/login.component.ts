@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { LoginService } from '../login.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Cookie } from 'ng2-cookies/ng2-cookies';
 
 
 @Component({
@@ -27,6 +28,8 @@ export class LoginComponent implements OnInit {
       .subscribe(risposta => {
         if (risposta.returnObject != null){
           console.log(risposta.returnObject.email);
+          Cookie.set('email', risposta.returnObject.email, 1 /*days from now*/);
+          /*Cookie.set('password', this.loginForm.password.value, 1 );*/
         }else{
           console.log("errore, login fallita");
         }
