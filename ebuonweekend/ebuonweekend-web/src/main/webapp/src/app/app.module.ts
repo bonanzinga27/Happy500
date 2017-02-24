@@ -21,6 +21,7 @@ import { DatiPersonaliComponent } from './dati-personali/dati-personali.componen
 import { DatiOrganizzazioneComponent } from './dati-organizzazione/dati-organizzazione.component';
 import {LoginService} from "./login.service";
 
+
 const appRoutes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
   { path: 'login',  component: LoginComponent },
