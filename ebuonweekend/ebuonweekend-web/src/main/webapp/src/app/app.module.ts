@@ -15,6 +15,7 @@ import { CardComponent } from './card/card.component';
 import { ItemListComponent } from './item-list/item-list.component';
 import {TabsService} from "./tabs.service";
 import {TypesFundingService} from "./types-funding.service";
+import {RegisterService} from "./register.service";
 
 const appRoutes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
@@ -44,7 +45,8 @@ const appRoutes: Routes = [
   ],
   providers: [
     TypesFundingService,
-    TabsService
+    TabsService,
+    RegisterService
   ],
   bootstrap: [AppComponent]
 })
