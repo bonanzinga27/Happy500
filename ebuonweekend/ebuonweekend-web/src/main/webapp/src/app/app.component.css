@@ -1,0 +1,12 @@
+.colore-navbar{
+  background-color: #337ab7;
+}
+
+.colore-navbar > a {
+  color: #fff;
+}
+
+.navbar-nav>li>a {
+  color: #fff !important;
+}
+
