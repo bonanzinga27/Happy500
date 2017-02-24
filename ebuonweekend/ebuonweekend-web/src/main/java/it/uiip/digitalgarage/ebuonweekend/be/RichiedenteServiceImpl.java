@@ -13,24 +13,15 @@ public class RichiedenteServiceImpl implements RichiedenteService {
 
     @Autowired
     RichiedenteDAO richiedenteDAO;
-    UtenteDAO utenteDAO;
 
     @Override
     public boolean insert(Richiedente richiedente) {
-        if (richiedenteDAO.selectByID(richiedente.getId()) != null) {
-            System.out.println("Richiedente già esistente!");
-            return false;
-        } else {
             return richiedenteDAO.insert(richiedente);
-        }
     }
 
     @Override
-    public boolean update(Richiedente richiedente,String email) {
-        richiedente.setIdUtente(new Long(utenteDAO.selectByEmail(email).getId()));
+    public boolean update(Richiedente richiedente) {
             return richiedenteDAO.update(richiedente);
-
-
     }
     @Override
     public boolean delete(Long id) {
