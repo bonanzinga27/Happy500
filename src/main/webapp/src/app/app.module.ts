@@ -2,7 +2,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
-/* import { MaterialModule } from '@angular/material'; */
 import { RouterModule, Routes} from '@angular/router';
 
 import { AppComponent } from './app.component';
@@ -13,9 +12,9 @@ import { CardContainerComponent } from './card-container/card-container.componen
 import { CardComponent } from './card/card.component';
 
 
-import { TypesFundingService } from './types-funding.service';
 import { ItemListComponent } from './item-list/item-list.component';
 import {TabsService} from "./tabs.service";
+import {TypesFundingService} from "./types-funding.service";
 
 const appRoutes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
@@ -43,7 +42,7 @@ const appRoutes: Routes = [
     RouterModule.forRoot(appRoutes)
   ],
   providers: [
-    { provide: "typesFunding", useClass: TypesFundingService },
+    TypesFundingService,
     TabsService
   ],
   bootstrap: [AppComponent]

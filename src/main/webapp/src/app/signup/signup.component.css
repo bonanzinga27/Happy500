@@ -134,12 +134,12 @@ label {
 }
 .panel-login>.panel-heading .login {
   padding: 20px 30px;
-  border-bottom-leftt-radius: 5px;
+
 }
 .panel-login>.panel-heading .register {
   padding: 20px 30px;
   background: #55001e;
-  border-bottom-right-radius: 5px;
+
 }
 .panel-login>.panel-heading a{
   text-decoration: none;
