@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { LoginService } from '../login.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import {Router} from "@angular/router";
 
 
 @Component({
@@ -16,22 +17,11 @@ export class LoginComponent implements OnInit {
   });
 
   constructor(
-    private loginService:LoginService
+    private loginService:LoginService,
+    private router:Router
   ) { }
 
   risp = {};
-
-
-
-public static tokenizerScript() {
-  let hashParams = window.location.hash.substr(1).split('&'); // substr(1) to remove the `#`
-  for (let i = 0; i < hashParams.length; i++) {
-    let p = hashParams[i].split('=');
-    (<HTMLInputElement>document.getElementById(p[0])).value = decodeURIComponent(p[1]);
-  }
-  console.log("ciaoooooo");
-}
-
 
 
 doLogin(){
@@ -40,8 +30,11 @@ doLogin(){
       .subscribe(risposta => {
         if (risposta.returnObject != null){
           console.log(risposta.returnObject.email);
+          alert("Login Effettuata");
+          this.router.navigate(['../home']);
         }else{
           console.log("errore, login fallita");
+          alert("Errore, ripeti la login");
         }
       });
     console.log(this.risp);

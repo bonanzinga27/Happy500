@@ -1,0 +1,39 @@
+.jumbotron {
+  padding:24px 30px;
+  background-color: #ffffff;
+}
+.denominazione-inline{
+  width:70%;
+  display: inline-block;
+}
+.ragione-inline{
+  width:29%;
+  display: inline-block;
+}
+.piva-inline{
+   width:49%;
+   display: inline-block;
+ }
+.capitale-inline{
+    width:49%;
+    display: inline-block;
+  }
+.stato-inline{
+  width:50%;
+  display: inline-block;
+}
+.citta-inline{
+  width:49%;
+  display: inline-block;
+}
+.prov-inline{
+  width:30%;
+  display: inline-block;
+}
+.indirizzo-inline{
+  width:69%;
+  display: inline-block;
+}
+label{
+  display:block;
+}
