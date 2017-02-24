@@ -11,8 +11,13 @@ export class TypesFundingService {
   ) { }
 
   getList() {
-    return this.http.get('http://localhost:8080/register?email=passerotto&pass=coglione')
-      .map((res:Response) => res.json());
+    /*return this.http.get('http://localhost:8080/getFinanziamenti')
+      .map((res:Response) => res.json());*/
+    return [
+        {nome: "Primo", descrizione: "Descrizioneeeeeeee"},
+        {nome: "Secondo", descrizione: "Descrizioneeeeeeee"},
+        {nome: "Terzo", descrizione: "Descrizioneeeeeeee"},
+    ]
   }
 
 }

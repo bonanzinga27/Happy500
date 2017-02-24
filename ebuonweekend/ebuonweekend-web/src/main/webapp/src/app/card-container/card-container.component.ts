@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {TypesFundingService} from "../types-funding.service";
+import {Observable} from "rxjs";
 
 @Component({
   selector: 'app-card-container',
@@ -15,7 +16,19 @@ export class CardContainerComponent implements OnInit {
   }
 
   getFundingList() {
-    this.funding.getList().subscribe(data => this.list = data);
+    /*this.funding.getList().subscribe(data => this.list = data);
+    this.funding.getList().subscribe(
+      data => {
+        // refresh the list
+        this.list = data;
+        return true;
+      },
+      error => {
+        console.error("Errore nella getList dei tipi di finanziamento!");
+        return Observable.throw(error);
+      }
+    );*/
+    this.list = this.funding.getList();
   }
 
   ngOnInit() {
