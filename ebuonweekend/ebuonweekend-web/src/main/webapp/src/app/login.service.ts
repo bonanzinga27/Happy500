@@ -23,6 +23,4 @@ export class LoginService {
       .map((res: Response) => res.json()) // ...and calling .json() on the response to return data
       .catch((error:any) => Observable.throw(error.json().error || 'Server error')); //...errors if any
   }
-
-
 }

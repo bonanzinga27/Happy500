@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { RouterModule, Routes} from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
+import { Cookie } from 'ng2-cookies/ng2-cookies';
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
@@ -16,7 +17,10 @@ import { ItemListComponent } from './item-list/item-list.component';
 import {TabsService} from "./tabs.service";
 import {TypesFundingService} from "./types-funding.service";
 import {RegisterService} from "./register.service";
+import { DatiPersonaliComponent } from './dati-personali/dati-personali.component';
+import { DatiOrganizzazioneComponent } from './dati-organizzazione/dati-organizzazione.component';
 import {LoginService} from "./login.service";
+
 
 const appRoutes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
@@ -35,7 +39,9 @@ const appRoutes: Routes = [
     FormPraticheComponent,
     CardContainerComponent,
     CardComponent,
-    ItemListComponent
+    ItemListComponent,
+    DatiPersonaliComponent,
+    DatiOrganizzazioneComponent
   ],
   imports: [
     BrowserModule,
@@ -48,7 +54,8 @@ const appRoutes: Routes = [
     TypesFundingService,
     TabsService,
     RegisterService,
-    LoginService
+    LoginService,
+    Cookie
   ],
   bootstrap: [AppComponent]
 })
