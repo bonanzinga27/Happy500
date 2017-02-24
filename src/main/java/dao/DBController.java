@@ -1,10 +1,7 @@
 package dao;
 
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
+import java.sql.*;
 
 
 public class DBController {
@@ -13,13 +10,14 @@ public class DBController {
 
 
     //  Database credentials
-    protected static final String DB_URL = "jdbc:mysql://138.68.133.189:3306/buonweekend";
+    /*protected static final String DB_URL = "jdbc:mysql://138.68.133.189:3306/buonweekend";
     protected static final String USER = "digitalgarage";
-    protected static final String PASS = "digipassword";
+    protected static final String PASS = "digipassword";*/
 
-    /*protected static final String DB_URL = "jdbc:mysql://localhost:3306/buonweekend";
+    protected static final String DB_URL = "jdbc:mysql://localhost:3306/happy500";
     protected static final String USER = "root";
-    protected static final String PASS = "admin";*/
+    protected static final String PASS = "admin";
+
     protected static Connection conn = null;
     protected static PreparedStatement stmt = null;
     protected static ResultSet rs = null;
