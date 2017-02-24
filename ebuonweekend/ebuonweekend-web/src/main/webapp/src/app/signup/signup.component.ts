@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {RegisterService} from '../register.service';
+import { RegisterService } from '../register.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
@@ -15,7 +15,9 @@ export class SignupComponent implements OnInit {
     confirmPassword: new FormControl("", Validators.required)
   });
 
-  constructor(private registerService:RegisterService) { }
+  constructor(
+    private registerService:RegisterService
+  ) { }
 
   risp = {};
 
