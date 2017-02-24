@@ -1,12 +1,13 @@
 package dao;
 
 
-import java.sql.*;
+import java.sql.*
 
 
 public class DBController {
 
     protected static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";
+
 
     //  Database credentials
     /*protected static final String DB_URL = "jdbc:mysql://138.68.133.189:3306/buonweekend";
@@ -16,6 +17,7 @@ public class DBController {
     protected static final String DB_URL = "jdbc:mysql://localhost:3306/happy500";
     protected static final String USER = "root";
     protected static final String PASS = "admin";
+
     protected static Connection conn = null;
     protected static PreparedStatement stmt = null;
     protected static ResultSet rs = null;
