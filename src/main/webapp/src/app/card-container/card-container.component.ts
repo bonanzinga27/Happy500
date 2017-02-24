@@ -8,10 +8,10 @@ import {TypesFundingService} from "../types-funding.service";
 })
 export class CardContainerComponent implements OnInit {
 
-  list = {};
+  list = [];
 
   constructor(private funding: TypesFundingService) {
-    this.list = this.getFundingList();
+    this.getFundingList();
   }
 
   getFundingList() {
