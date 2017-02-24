@@ -4,11 +4,13 @@ import com.mysql.jdbc.Statement;
 import it.uiip.digitalgarage.ebuonweekend.entity.Pratica;
 import it.uiip.digitalgarage.ebuonweekend.idao.PraticaDAO;
 import it.uiip.digitalgarage.ebuonweekend.utils.DateUtil;
+import org.springframework.stereotype.Component;
 
 import java.sql.SQLException;
 
 import static it.uiip.digitalgarage.ebuonweekend.dao.DBController.*;
 
+@Component
 public class PraticaDAOImpl implements PraticaDAO{
 
     private final String INSERT = "INSERT INTO pratica (tipologia, importo, dataRichiesta, completata, numDipendenti, durata, iban, idRichiedente, idOrganizzazione, descrizioneProgetto, pdfPath) VALUES (?,?,?,?,?,?,?,?,?,?,?)";
