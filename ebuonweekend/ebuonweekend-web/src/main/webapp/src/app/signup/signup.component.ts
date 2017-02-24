@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {RegisterService} from '../register.service';
-import { FormBuilder, Validators } from '@angular/forms';
-
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-signup',
@@ -10,13 +9,12 @@ import { FormBuilder, Validators } from '@angular/forms';
 })
 export class SignupComponent implements OnInit {
 
-  public signUpform = this.fb.group({
-    email:["", Validators.required],
-    password:["", Validators.required]
+  public signUpform = new FormGroup({
+    email: new FormControl("email", Validators.required),
+    password: new FormControl("password", Validators.required)
   });
 
-
-  constructor(public fb: FormBuilder, private registerService:RegisterService) { }
+  constructor(private registerService:RegisterService) { }
 
   doSignup(event){
     this.registerService.signup(event);

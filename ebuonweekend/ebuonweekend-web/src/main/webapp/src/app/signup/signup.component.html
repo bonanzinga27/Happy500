@@ -7,7 +7,7 @@
             <form [formGroup]="signUpform" (ngSubmit)="doSignup($event)" style="display: block;">
               <h2>SIGN UP</h2>
               <div class="form-group">
-                <input type="email" formcontrolname="email" id="email"  tabindex="1" class="form-control" placeholder="Email" value="">
+                <input type="email" formControlName="email" id="email"  tabindex="1" class="form-control" placeholder="Email" value="">
               </div>
               <div class="form-group">
                 <input type="password" formControlName="password" id="password"  tabindex="2" class="form-control" placeholder="Password">
@@ -25,7 +25,7 @@
       </div>
       <div class="panel-heading">
         <div class="row">
-          <a routerLink="/login"id="register-form-link"><div class="register">LOGIN</div></a>
+          <a routerLink="/login" id="register-form-link"><div class="register">LOGIN</div></a>
           </div>
         </div>
       </div>

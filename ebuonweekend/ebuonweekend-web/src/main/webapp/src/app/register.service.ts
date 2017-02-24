@@ -10,8 +10,8 @@ export class RegisterService {
   ) { }
 
   signup(user){
-    return this.http.get('http://localhost:8080/register?email='+user.email+'&pass='+user.password)
-      .map((res:Response) => res.json());
+    /*return this.http.get('http://localhost:8080/register?email='+user.email+'&pass='+user.password)
+      .map((res:Response) => res.json());*/
   }
 
 
