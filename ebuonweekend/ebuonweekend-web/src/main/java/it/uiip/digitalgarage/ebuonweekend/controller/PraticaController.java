@@ -2,6 +2,7 @@ package it.uiip.digitalgarage.ebuonweekend.controller;
 
 import it.uiip.digitalgarage.ebuonweekend.entity.GenericReturn;
 import it.uiip.digitalgarage.ebuonweekend.entity.Pratica;
+import it.uiip.digitalgarage.ebuonweekend.entity.TipoFinanziamento;
 import it.uiip.digitalgarage.ebuonweekend.ibe.PraticaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -33,7 +34,13 @@ public class PraticaController{
 
     }
 
-    //@RequestMapping("/getFinanziamento")
+
+    //API PER PRENDERE DAL DB TUTTI I TIPI DI FINANZIAMENTO POSSIBILI
+    @RequestMapping("/getFinanziamento")
+    public GenericReturn<TipoFinanziamento[]> getFinanziamento(){
+
+        return new GenericReturn<>(praticaService.getAllTipoFinanziamento());
+    }
 
 
 
