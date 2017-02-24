@@ -1,9 +1,5 @@
 package it.uiip.digitalgarage.ebuonweekend.controller;
 
-/**
- * Created by gvasa on 23/02/2017.
- */
-
 
 import it.uiip.digitalgarage.ebuonweekend.entity.GenericReturn;
 import it.uiip.digitalgarage.ebuonweekend.entity.Richiedente;
@@ -15,13 +11,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-@CrossOrigin(origins = "http://localhost:4200")
+
 @RestController
 public class RichiedenteController {
 
     @Autowired
     RichiedenteService richiedenteService;
 
+    @CrossOrigin(origins = "http://localhost:4200")
     @RequestMapping("/getRichiedente")
     public GenericReturn<Richiedente> getUser(@RequestParam(value = "id", defaultValue = "@unregistered") Long id) {
 
@@ -29,6 +26,7 @@ public class RichiedenteController {
     }
 
 
+    @CrossOrigin(origins = "http://localhost:4200")
     @RequestMapping("/editRichiedente")
     public GenericReturn<Boolean> editUser(@RequestParam(value = "nome", defaultValue = "undefined") String nome,
                                            @RequestParam(value = "cognome", defaultValue = "undefined") String cognome,

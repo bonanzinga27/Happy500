@@ -2,9 +2,7 @@ package it.uiip.digitalgarage.ebuonweekend.entity;
 
 import java.time.LocalDate;
 
-/**
- * Created by gvasa on 23/02/2017.
- */
+
 public class Richiedente {
     private Long id;
     private String nome;

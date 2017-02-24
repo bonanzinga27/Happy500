@@ -12,13 +12,13 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.time.LocalDate;
 
-@CrossOrigin(origins = "http://localhost:4200")
 @RestController
 public class PraticaController{
 
     @Autowired
     PraticaService praticaService;
 
+    @CrossOrigin(origins = "http://localhost:4200")
     @RequestMapping("/insertPratica")
     public GenericReturn<Boolean> insertPratica(@RequestParam(value="tipo", defaultValue="null") String tipologia,
                                                 @RequestParam(value="importo", defaultValue = "null") String importo,
@@ -38,6 +38,7 @@ public class PraticaController{
 
 
     //API PER PRENDERE DAL DB TUTTI I TIPI DI FINANZIAMENTO POSSIBILI
+    @CrossOrigin(origins = "http://localhost:4200")
     @RequestMapping("/getFinanziamento")
     public GenericReturn<TipoFinanziamento[]> getFinanziamento(){
 

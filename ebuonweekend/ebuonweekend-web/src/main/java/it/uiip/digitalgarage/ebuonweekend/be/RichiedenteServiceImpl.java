@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class RichiedenteServiceImpl implements RichiedenteService {
+
     @Autowired
     RichiedenteDAO richiedenteDAO;
     UtenteDAO utenteDAO;
