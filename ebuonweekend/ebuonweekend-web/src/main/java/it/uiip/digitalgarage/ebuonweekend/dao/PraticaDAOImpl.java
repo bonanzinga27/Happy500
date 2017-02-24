@@ -2,6 +2,7 @@ package it.uiip.digitalgarage.ebuonweekend.dao;
 
 import com.mysql.jdbc.Statement;
 import it.uiip.digitalgarage.ebuonweekend.entity.Pratica;
+import it.uiip.digitalgarage.ebuonweekend.entity.TipoFinanziamento;
 import it.uiip.digitalgarage.ebuonweekend.idao.PraticaDAO;
 import it.uiip.digitalgarage.ebuonweekend.utils.DateUtil;
 import org.springframework.stereotype.Component;
@@ -14,6 +15,8 @@ import static it.uiip.digitalgarage.ebuonweekend.dao.DBController.*;
 public class PraticaDAOImpl implements PraticaDAO{
 
     private final String INSERT = "INSERT INTO pratica (tipologia, importo, dataRichiesta, completata, numDipendenti, durata, iban, idRichiedente, idOrganizzazione, descrizioneProgetto, pdfPath) VALUES (?,?,?,?,?,?,?,?,?,?,?)";
+
+    private final String SELECT_ALL_FINANZIAMENTO = "SELECT * FROM tipofinanziamento";
 
     @Override
     public boolean insert(Pratica p) {
@@ -52,7 +55,39 @@ public class PraticaDAOImpl implements PraticaDAO{
         }
 
         return false;
+    }
 
+    @Override
+    public TipoFinanziamento[] getAllTipoFinanziamento() {
+        TipoFinanziamento t[] = null;
+        int i = 0;
 
+        try{
+            if(connectDB(SELECT_ALL_FINANZIAMENTO)){
+                rs = stmt.executeQuery();
+
+                if(rs.next()){
+                    rs.last();
+                    t = new TipoFinanziamento[rs.getRow()];
+                    rs.first();
+                    do{
+                        t[i] = new TipoFinanziamento(rs.getInt(1), rs.getString(2), rs.getString(3));
+                        rs.next();
+                        i++;
+                    }while(i<t.length);
+
+                    disconnectDB();
+                    return t;
+                }
+            }
+
+        }catch (SQLException e) {
+            // e.printStackTrace();
+            disconnectDB();
+            throw new RuntimeException(e);
+        } finally {
+            disconnectDB();
+        }
+        return t;
     }
 }

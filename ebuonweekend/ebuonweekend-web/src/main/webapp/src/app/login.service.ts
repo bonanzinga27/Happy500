@@ -4,16 +4,16 @@ import {Observable} from "rxjs";
 import 'rxjs/add/operator/map';
 
 @Injectable()
-export class RegisterService {
+export class LoginService {
 
   constructor(
     private http: Http
   ) { }
 
-  signup(user){
-    let api = 'http://localhost:8080/register?email='+user.email+'&pass='+user.password;
+  login(user){
+    let api = 'http://localhost:8080/login?email='+user.email+'&pass='+user.password;
     /*return this.http.get('http://localhost:8080/register?email='+user.email+'&pass='+user.password)
-      .map((res:Response) => res.json());*/
+     .map((res:Response) => res.json());*/
 
     let bodyString = JSON.stringify(user); // Stringify payload
     let headers = new Headers({ 'Content-Type': 'application/json' }); // ... Set content type to JSON

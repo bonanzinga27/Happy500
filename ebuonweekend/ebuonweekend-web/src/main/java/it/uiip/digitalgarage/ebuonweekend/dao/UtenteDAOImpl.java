@@ -16,7 +16,7 @@ public class UtenteDAOImpl implements UtenteDAO {
 	
 	private static final String INSERT = "INSERT INTO utente (email, password) VALUES(?, ?)";
 	private static final String SELECT_BY_EMAIL = "SELECT * FROM utente WHERE email=?";
-	private static final String SELECT_BY_EMAIL_PASS="SELECT * FROM utente WHERE nickName=? AND password=?";
+	private static final String SELECT_BY_EMAIL_PASS="SELECT * FROM utente WHERE email=? AND password=?";
 	
 	
 	@Override

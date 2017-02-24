@@ -16,6 +16,7 @@ import { ItemListComponent } from './item-list/item-list.component';
 import {TabsService} from "./tabs.service";
 import {TypesFundingService} from "./types-funding.service";
 import {RegisterService} from "./register.service";
+import {LoginService} from "./login.service";
 
 const appRoutes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
@@ -46,7 +47,8 @@ const appRoutes: Routes = [
   providers: [
     TypesFundingService,
     TabsService,
-    RegisterService
+    RegisterService,
+    LoginService
   ],
   bootstrap: [AppComponent]
 })
