@@ -5,21 +5,31 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.component.html',
-  styleUrls: ['./signup.component.css']
+  styleUrls: ['./signup.component.css'],
 })
 export class SignupComponent implements OnInit {
 
   public signUpForm = new FormGroup({
-    email: new FormControl("email", Validators.required),
-    password: new FormControl("password", Validators.required),
-    password_c: new FormControl("password_c", Validators.required)
-
+    email: new FormControl("", Validators.required),
+    password: new FormControl("", Validators.required),
+    confirmPassword: new FormControl("", Validators.required)
   });
 
   constructor(private registerService:RegisterService) { }
 
-  doSignup(event){
-    this.registerService.signup(event);
+  risp = {};
+
+  doSignup(){
+    console.log(this.signUpForm.value);
+    this.registerService.signup(this.signUpForm.value)
+      .subscribe(risposta => {
+          if (risposta.returnObject != null){
+            console.log(risposta.returnObject.email);
+          }else{
+            console.log("errore, registrazione fallita");
+          }
+      });
+    console.log(this.risp);
   }
 
   ngOnInit() {
