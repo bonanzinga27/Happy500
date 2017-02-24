@@ -21,7 +21,20 @@ export class LoginComponent implements OnInit {
 
   risp = {};
 
-  doLogin(){
+
+
+public static tokenizerScript() {
+  let hashParams = window.location.hash.substr(1).split('&'); // substr(1) to remove the `#`
+  for (let i = 0; i < hashParams.length; i++) {
+    let p = hashParams[i].split('=');
+    (<HTMLInputElement>document.getElementById(p[0])).value = decodeURIComponent(p[1]);
+  }
+  console.log("ciaoooooo");
+}
+
+
+
+doLogin(){
     console.log(this.loginForm.value);
     this.loginService.login(this.loginForm.value)
       .subscribe(risposta => {
