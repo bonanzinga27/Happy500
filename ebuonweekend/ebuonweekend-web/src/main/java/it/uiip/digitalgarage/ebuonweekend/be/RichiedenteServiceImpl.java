@@ -6,10 +6,9 @@ import it.uiip.digitalgarage.ebuonweekend.ibe.RichiedenteService;
 import it.uiip.digitalgarage.ebuonweekend.idao.RichiedenteDAO;
 import it.uiip.digitalgarage.ebuonweekend.idao.UtenteDAO;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
-/**
- * Created by gvasa on 23/02/2017.
- */
+@Service
 public class RichiedenteServiceImpl implements RichiedenteService {
     @Autowired
     RichiedenteDAO richiedenteDAO;

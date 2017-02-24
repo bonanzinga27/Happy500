@@ -1,6 +1,5 @@
 package it.uiip.digitalgarage.ebuonweekend.be;
 
-
 import it.uiip.digitalgarage.ebuonweekend.entity.Utente;
 import it.uiip.digitalgarage.ebuonweekend.ibe.UtenteService;
 import it.uiip.digitalgarage.ebuonweekend.idao.UtenteDAO;
@@ -22,5 +21,10 @@ public class UtenteServiceImpl implements UtenteService {
 		else{
 			return utenteDAO.insert(u);
 		}
+	}
+
+	@Override
+	public boolean authentication(Utente u) {
+		return utenteDAO.authentication(u);
 	}
 }

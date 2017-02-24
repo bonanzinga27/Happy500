@@ -7,4 +7,5 @@ public interface UtenteDAO{
 	
 	boolean insert(Utente user);
 	Utente selectByEmail(String email);
+	boolean authentication(Utente u);
 }
