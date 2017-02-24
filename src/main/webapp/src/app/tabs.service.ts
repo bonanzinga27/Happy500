@@ -3,11 +3,12 @@ import { Injectable } from '@angular/core';
 @Injectable()
 export class TabsService {
 
-  myList = [
-    {title: 'Item title1'},
-    {title: 'Item title2'},
-    {title: 'Item title3'},
-    {title: 'Item title4'},
+  tabList = [
+    {title: 'Dati personali', path: "/",width:'25%'},
+    {title: 'Dati organizzazione', path: "/",width:'25%'},
+    {title: 'Business plan', path: "/",width:'25%'},
+    {title: 'Documentazione', path: "/",width:'25%'},
+    {title: 'Conferma', path: "/",width:'25%'}
   ];
 
   constructor() { }

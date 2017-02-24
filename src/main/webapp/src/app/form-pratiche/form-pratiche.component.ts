@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {TabsService} from "../tabs.service";
 
 @Component({
   selector: 'app-form-pratiche',
@@ -7,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FormPraticheComponent implements OnInit {
 
-  constructor() { }
+  constructor(private tabs:TabsService) { }
 
   ngOnInit() {
   }
