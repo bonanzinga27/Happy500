@@ -10,31 +10,3 @@ p{
 .jumbotron {
   background-color: #ffffff;
 }
-.nome-cognome-inline{
-  width:41.5%;
-  display: inline-block;
-}
-.sesso-inline{
-  width:15%;
-  display: inline-block;
-}
-.citta-inline{
-  width:69%;
-  display: inline-block;
-}
-.prov-inline{
-  width:30%;
-  display: inline-block;
-}
-#codice-fiscale{
-  display:inline-block;
-  width:66%;
-  text-transform:uppercase
-}
-#calcolaCF{
-  padding:auto;
-  width:33%;
-}
-label{
-  display:block;
-}

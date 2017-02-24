@@ -8,6 +8,14 @@ import {TabsService} from "../tabs.service";
 })
 export class FormPraticheComponent implements OnInit {
 
+  isSelected(id){
+    if(id === this.tabs.currentPage){
+      return true;
+    }else{
+      return false;
+    }
+  }
+
   constructor(private tabs:TabsService) { }
 
   ngOnInit() {
