@@ -44,13 +44,13 @@ public class RichiedenteController {
                                            @RequestParam(value = "idUtente", defaultValue = "undefined") Integer idUtente,
                                            @RequestParam(value = "emailRichiedente", defaultValue = "undefined") String emailRichiedente,
                                            @RequestParam(value = "cartaIdentitaPath", defaultValue = "undefined") String cartaIdentitaPath,
-                                           @RequestParam(value = "codFiscPath", defaultValue = "undefined") String codFiscPath
-                                           ){
+                                           @RequestParam(value = "codFiscPath", defaultValue = "undefined") String codFiscPath,
+                                           @RequestParam(value = "sesso", defaultValue = "undefined") String sesso){
 
         ///ebuonweekend-web/editUser?nickName=leo&firstName=Leonardo&lastName=Galati&telephone=3483401922&statoUtente=montagna&profilePicture=C:/E-Buonweekend-Uploads/image_4.jpg
 
 
-            Richiedente richiedente = new Richiedente(0l, nome, cognome, codFisc, DateUtil.parse(dataNascita), cittaNascita, provinciaNascita, telefono, cittaResidenza, provinciaResidenza, indirizzoResidenza, 0l, emailRichiedente,cartaIdentitaPath,codFiscPath);
+            Richiedente richiedente = new Richiedente(0l, nome, cognome, codFisc, DateUtil.parse(dataNascita), cittaNascita, provinciaNascita, telefono, cittaResidenza, provinciaResidenza, indirizzoResidenza, 0l, emailRichiedente,cartaIdentitaPath,codFiscPath, sesso);
             return new GenericReturn<Boolean>(richiedenteService.update(richiedente,email));
 
 

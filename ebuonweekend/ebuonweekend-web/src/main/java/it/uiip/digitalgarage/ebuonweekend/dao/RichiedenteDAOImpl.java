@@ -7,16 +7,15 @@ import it.uiip.digitalgarage.ebuonweekend.idao.RichiedenteDAO;
 import it.uiip.digitalgarage.ebuonweekend.utils.DateUtil;
 import org.springframework.stereotype.Component;
 
+import static it.uiip.digitalgarage.ebuonweekend.dao.DBController.*;
+
 import java.sql.SQLException;
 
-/**
- * Created by gvasa on 23/02/2017.
- */
 @Component
 public class RichiedenteDAOImpl implements RichiedenteDAO {
 
 
-        private static final String INSERT = "INSERT INTO richiedente (nome, cognome,codFisc, dataNascita, cittaNascita, provinciaNascita, telefono, cittaResidenza, provinciaResidenza,indirizzoResidenza,idUtente,emailRichiedente,cartaIdentitaPath,codFiscPath) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+    private static final String INSERT = "INSERT INTO richiedente (nome, cognome,codFisc, dataNascita, cittaNascita, provinciaNascita, telefono, cittaResidenza, provinciaResidenza,indirizzoResidenza,idUtente,emailRichiedente,cartaIdentitaPath,codFiscPath) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
     private static final String UPDATE = "UPDATE richiedente SET nome=?, cognome=?, codFisc=? , dataNascita=?, cittaNascita=? ,provinciaNascita=?, telefono=?, cittaResidenza=?, provinciaResidenza=?, indirizzoResidenza=?, idUtente=?, emailRichiedente=?, cartaIdentitaPath=?, codFiscaPath=?, WHERE id=?";
     private static final String DELETE = "DELETE FROM richiedente WHERE id=?";
     private static final String SELECT_BY_ID = "SELECT * FROM richiedente WHERE id=?";
@@ -115,7 +114,7 @@ public class RichiedenteDAOImpl implements RichiedenteDAO {
                 DBController.rs = DBController.stmt.executeQuery();
 
                 if (DBController.rs.next()) {
-                    richiedente = new Richiedente(id, DBController.rs.getString(1), DBController.rs.getString(2), DBController.rs.getString(3), DateUtil.parse(DBController.rs.getString(4)), DBController.rs.getString(5), DBController.rs.getString(6), DBController.rs.getString(7), DBController.rs.getString(8), DBController.rs.getString(9), DBController.rs.getString(10), DBController.rs.getLong(11), DBController.rs.getString(12), DBController.rs.getString(13), DBController.rs.getString(14));
+                    richiedente = new Richiedente(rs.getLong(1), DBController.rs.getString(2), DBController.rs.getString(3), DBController.rs.getString(4), DateUtil.parse(DBController.rs.getString(5)), DBController.rs.getString(6), DBController.rs.getString(7), DBController.rs.getString(8), DBController.rs.getString(9), DBController.rs.getString(10), DBController.rs.getString(11), DBController.rs.getLong(12), DBController.rs.getString(13), DBController.rs.getString(14), DBController.rs.getString(15), rs.getString(16));
 
                         DBController.disconnectDB();
                     return richiedente;

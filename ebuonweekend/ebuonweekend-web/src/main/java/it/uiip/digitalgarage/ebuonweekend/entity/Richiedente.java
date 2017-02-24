@@ -21,8 +21,9 @@ public class Richiedente {
     private String emailRichiedente;
     private String cartaIdentitaPath;
     private String codFiscPath;
+    private String sesso;
 
-    public Richiedente(Long id, String nome, String cognome, String codFisc, LocalDate dataNascita, String cittaNascita, String provinciaNascita, String telefono, String cittaResidenza, String provinciaResidenza, String indirizzoResidenza, Long idUtente, String emailRichiedente, String cartaIdentitaPath, String codFiscPath) {
+    public Richiedente(Long id, String nome, String cognome, String codFisc, LocalDate dataNascita, String cittaNascita, String provinciaNascita, String telefono, String cittaResidenza, String provinciaResidenza, String indirizzoResidenza, Long idUtente, String emailRichiedente, String cartaIdentitaPath, String codFiscPath, String sesso) {
         this.id = id;
         this.nome = nome;
         this.cognome = cognome;
@@ -38,6 +39,7 @@ public class Richiedente {
         this.emailRichiedente = emailRichiedente;
         this.cartaIdentitaPath = cartaIdentitaPath;
         this.codFiscPath = codFiscPath;
+        this.sesso = sesso;
     }
 
 
@@ -160,5 +162,13 @@ public class Richiedente {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getSesso() {
+        return sesso;
+    }
+
+    public void setSesso(String sesso) {
+        this.sesso = sesso;
     }
 }
