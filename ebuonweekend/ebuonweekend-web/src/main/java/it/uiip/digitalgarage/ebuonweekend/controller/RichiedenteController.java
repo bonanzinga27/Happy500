@@ -13,20 +13,22 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
+@CrossOrigin(origins = "http://localhost:4200")
+@RestController
 public class RichiedenteController {
+
     @Autowired
     RichiedenteService richiedenteService;
 
-    //METODO PER RITORNARE UN UTENTE
-    @CrossOrigin(origins = "http://localhost:4200")
     @RequestMapping("/getRichiedente")
     public GenericReturn<Richiedente> getUser(@RequestParam(value = "id", defaultValue = "@unregistered") Long id) {
 
         return new GenericReturn<>(richiedenteService.selectByID(id),null);
     }
 
-    @CrossOrigin(origins = "http://localhost:4200")
+
     @RequestMapping("/editRichiedente")
     public GenericReturn<Boolean> editUser(@RequestParam(value = "nome", defaultValue = "undefined") String nome,
                                            @RequestParam(value = "cognome", defaultValue = "undefined") String cognome,
