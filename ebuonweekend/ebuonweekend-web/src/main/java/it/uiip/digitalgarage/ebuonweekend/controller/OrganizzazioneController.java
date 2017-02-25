@@ -25,9 +25,11 @@ public class OrganizzazioneController {
                                                               @RequestParam(value = "provincia", defaultValue = "null") String prov,
                                                               @RequestParam(value = "cap", defaultValue = "null") String cap,
                                                               @RequestParam(value = "stato", defaultValue = "null") String stato,
-                                                              @RequestParam(value = "email", defaultValue = "null") String email){
+                                                              @RequestParam(value = "email", defaultValue = "null") String email,
+                                                              @RequestParam(value = "idRichiedente", defaultValue = "null") String idRich){
 
-        Organizzazione o = new Organizzazione(0, denom, ragSoc, piva, citta, ind, prov, cap, stato, email);
+
+        Organizzazione o = new Organizzazione(0, denom, ragSoc, piva, citta, ind, prov, cap, stato, email, Integer.parseInt(idRich));
 
         if(organizzazioneService.insert(o)){
             return new GenericReturn<>(o);

@@ -18,12 +18,21 @@
   width:30%;
   display: inline-block;
 }
-#codice-fiscale{
+.email-inline{
+  width:49%;
+  display: inline-block;
+}
+.nascita-inline{
+  width:49%;
+  display: inline-block;
+}
+#codFisc{
   display:inline-block;
   width:66%;
   text-transform:uppercase
 }
 #calcolaCF{
+
   padding:auto;
   width:33%;
 }
