@@ -14,9 +14,11 @@ import static it.uiip.digitalgarage.ebuonweekend.dao.DBController.*;
 @Component
 public class PraticaDAOImpl implements PraticaDAO{
 
-    private final String INSERT = "INSERT INTO pratica (tipologia, importo, dataRichiesta, completata, numDipendenti, durata, iban, idRichiedente, idOrganizzazione, descrizioneProgetto, pdfPath) VALUES (?,?,?,?,?,?,?,?,?,?,?)";
+    private final String INSERT = "INSERT INTO pratica (tipologia, importo, dataRichiesta, completata, numDipendenti, durata, iban, idRichiedente, idOrganizzazione, descrizioneProgetto, pdfPath, emailUtente) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)";
 
     private final String SELECT_ALL_FINANZIAMENTO = "SELECT * FROM tipofinanziamento";
+    private static final String UPDATE_PATH = "UPDATE pratica SET pdfPath=? WHERE id=?";
+
 
     @Override
     public boolean insert(Pratica p) {
@@ -35,6 +37,7 @@ public class PraticaDAOImpl implements PraticaDAO{
                 stmt.setString(9, String.valueOf(p.getIdOrganizzazione()));
                 stmt.setString(10, p.getDescrizioneProgetto());
                 stmt.setString(11, p.getPdfPath());
+                stmt.setString(12, p.getEmailUtente());
 
                 int result = stmt.executeUpdate();
                 rs = stmt.getGeneratedKeys();
@@ -55,6 +58,31 @@ public class PraticaDAOImpl implements PraticaDAO{
         }
 
         return false;
+    }
+
+    @Override
+    public  boolean updatePathPratica(Long idPratica,String path){
+        try {
+            if(!DBController.connectDB(UPDATE_PATH))
+                return false;
+            else {
+                DBController.stmt.setString(1, path);
+                DBController.stmt.setLong(2, idPratica);
+                int rs = DBController.stmt.executeUpdate();
+                if(rs == 0){
+                    System.out.println("Richiedente non trovato!");
+                    DBController.disconnectDB();
+                    return false;
+                }
+                DBController.disconnectDB();
+                return true;
+            }
+        } catch (SQLException e) {
+            // e.printStackTrace();
+            throw new RuntimeException(e);
+        } finally {
+            DBController.disconnectDB();
+        }
     }
 
     @Override

@@ -29,7 +29,7 @@ public class OrganizzazioneController {
                                                               @RequestParam(value = "idRichiedente", defaultValue = "null") String idRich){
 
 
-        Organizzazione o = new Organizzazione(0, denom, ragSoc, piva, citta, ind, prov, cap, stato, email, Integer.parseInt(idRich));
+        Organizzazione o = new Organizzazione(0, denom, ragSoc, piva, citta, ind, prov, cap, stato, email);
 
         if(organizzazioneService.insert(o)){
             return new GenericReturn<>(o);

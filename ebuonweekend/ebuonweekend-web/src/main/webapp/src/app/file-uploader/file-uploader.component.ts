@@ -2,7 +2,7 @@ import { Component, OnInit ,ElementRef, Input, ViewChild} from '@angular/core';
 import {Http, Response, RequestOptions, Headers} from '@angular/http';
 import {Observable} from "rxjs";
 
-const URL = 'http://localhost:8080/uploadFile';
+const URL = 'http://localhost:8080/uploadFile?idPratica=1';
 
 @Component({
   selector: 'app-file-uploader',

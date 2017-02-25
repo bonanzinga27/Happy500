@@ -10,5 +10,6 @@ public interface PraticaService{
 
 
     TipoFinanziamento[] getAllTipoFinanziamento();
+    boolean updatePathPratica(Long idPratica,String path);
 
 }
