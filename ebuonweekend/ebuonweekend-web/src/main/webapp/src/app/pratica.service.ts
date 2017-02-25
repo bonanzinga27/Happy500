@@ -19,10 +19,10 @@ export class PraticaService {
                           '&codFisc='+user.codFisc+
                           '&dataNascita='+user.dataNascita+
                           '&cittaNascita='+user.cittaNascita+
-                          '&provinciaNascita='+user.provNascita+
+                          '&provinciaNascita='+user.provinciaNascita+
                           '&telefono='+user.telefono+
                           '&cittaResidenza='+user.cittaResidenza+
-                          '&provinciaResidenza='+user.provResidenza+
+                          '&provinciaResidenza='+user.provinciaResidenza+
                           '&indirizzoResidenza='+user.indirizzoResidenza+
                           '&emailRichiedente='+user.emailRichiedente+
                           '&cartaIdentitaPath='+user.cartaIdentitaPath+

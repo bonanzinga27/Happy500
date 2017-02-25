@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {TabsService} from "../tabs.service";
 import {PraticaService} from "../pratica.service";
 import {Cookie} from "ng2-cookies";
@@ -24,10 +24,10 @@ export class FormPraticheComponent implements OnInit {
     this.pratica.getRichiedente(Cookie.get('idRichiedente'))
       .subscribe(risposta => {
         if (risposta.returnObject != null){
-          /*this.datiPersonali = JSON.parse(JSON.stringify(risposta.returnObject));
-          dataCorretta =  risposta.returnObject.dataNascita.dayOfMonth + "/" +
+          this.datiPersonali = JSON.parse(JSON.stringify(risposta.returnObject));
+          /*let dataCorretta =  risposta.returnObject.dataNascita.dayOfMonth + "/" +
                               risposta.returnObject.dataNascita.monthValue + "/" +
-                              risposta.returnObject.dataNascita.year
+                              risposta.returnObject.dataNascita.year;
           this.datiPersonali.dataNascita = dataCorretta;*/
         }else{
           console.log("errore, login fallita");
@@ -45,5 +45,6 @@ export class FormPraticheComponent implements OnInit {
 
   ngOnInit() {
   }
+
 
 }
