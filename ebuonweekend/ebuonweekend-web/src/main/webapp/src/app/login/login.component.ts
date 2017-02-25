@@ -1,12 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { LoginService } from '../login.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-
+import {FileUploaderComponent} from "../file-uploader/file-uploader.component";
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  styleUrls: ['./login.component.css'],
+  providers: [FileUploaderComponent]
 })
 export class LoginComponent implements OnInit {
 
