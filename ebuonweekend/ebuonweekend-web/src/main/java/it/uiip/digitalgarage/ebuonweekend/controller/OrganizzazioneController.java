@@ -25,8 +25,7 @@ public class OrganizzazioneController {
                                                               @RequestParam(value = "provincia", defaultValue = "null") String prov,
                                                               @RequestParam(value = "cap", defaultValue = "null") String cap,
                                                               @RequestParam(value = "stato", defaultValue = "null") String stato,
-                                                              @RequestParam(value = "email", defaultValue = "null") String email,
-                                                              @RequestParam(value = "idRichiedente", defaultValue = "null") String idRich){
+                                                              @RequestParam(value = "email", defaultValue = "null") String email){
 
 
         Organizzazione o = new Organizzazione(0, denom, ragSoc, piva, citta, ind, prov, cap, stato, email);
@@ -37,6 +36,25 @@ public class OrganizzazioneController {
         else{
             return new GenericReturn<>(null);
         }
+    }
+
+    @CrossOrigin(origins = "http://localhost:4200")
+    @RequestMapping("/editOrganizzazione")
+    public GenericReturn<Boolean> editOrganizzazione(@RequestParam(value = "id", defaultValue = "null") String id,
+                                                     @RequestParam(value = "denominazione", defaultValue = "null") String denom,
+                                                     @RequestParam(value = "ragioneSociale", defaultValue = "null") String ragSoc,
+                                                     @RequestParam(value = "piva", defaultValue = "null") String piva,
+                                                     @RequestParam(value = "citta", defaultValue = "null") String citta,
+                                                     @RequestParam(value = "indirizzo", defaultValue = "null") String ind,
+                                                     @RequestParam(value = "provincia", defaultValue = "null") String prov,
+                                                     @RequestParam(value = "cap", defaultValue = "null") String cap,
+                                                     @RequestParam(value = "stato", defaultValue = "null") String stato,
+                                                     @RequestParam(value = "email", defaultValue = "null") String email){
+
+        Organizzazione o = new Organizzazione(Integer.valueOf(id), denom, ragSoc, piva, citta, ind, prov, cap, stato, email);
+
+        return new GenericReturn<>(organizzazioneService.update(o));
+
     }
 
 

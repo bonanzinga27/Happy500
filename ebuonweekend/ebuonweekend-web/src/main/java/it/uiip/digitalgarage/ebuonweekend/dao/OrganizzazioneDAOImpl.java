@@ -13,6 +13,7 @@ import static it.uiip.digitalgarage.ebuonweekend.dao.DBController.*;
 public class OrganizzazioneDAOImpl implements OrganizzazioneDAO {
 
     private final String INSERT = "INSERT INTO organizzazione (denominazione, ragioneSociale, piva, cittaSede, indirizzoSede, provinciaSede, capSede, statoSede, emailOrganizzazione) VALUES (?,?,?,?,?,?,?,?,?)";
+    private final String UPDATE = "UPDATE organizzazione SET denominazione=?, ragioneSociale=?, piva=? , cittaSede=?, indirizzoSede=? ,provinciaSede=?, capSede=?, statoSede=?, emailOrganizzazione=? WHERE id=?";
 
     @Override
     public boolean insert(Organizzazione o) {
@@ -38,6 +39,42 @@ public class OrganizzazioneDAOImpl implements OrganizzazioneDAO {
                     return true;
                 }
 
+            }
+
+        }catch (SQLException e) {
+            // e.printStackTrace();
+            disconnectDB();
+            throw new RuntimeException(e);
+        } finally {
+            DBController.disconnectDB();
+        }
+        return false;
+    }
+
+    @Override
+    public boolean update(Organizzazione o) {
+
+        try{
+            if(connectDB(UPDATE)){
+                stmt.setString(1, o.getDenominazione());
+                stmt.setString(2, o.getRagioneSociale());
+                stmt.setString(3, o.getPiva());
+                stmt.setString(4, o.getCittaSede());
+                stmt.setString(5, o.getIndirizzoSede());
+                stmt.setString(6, o.getProvinciaSede());
+                stmt.setString(7, o.getCapSede());
+                stmt.setString(8, o.getStatoSede());
+                stmt.setString(9, o.getEmailOrganizzazione());
+                stmt.setInt(10, o.getId());
+                int rs = stmt.executeUpdate();
+
+                if(rs == 0){
+                    System.out.println("Organizzazione non trovata!");
+                    DBController.disconnectDB();
+                    return false;
+                }
+                DBController.disconnectDB();
+                return true;
             }
 
         }catch (SQLException e) {
