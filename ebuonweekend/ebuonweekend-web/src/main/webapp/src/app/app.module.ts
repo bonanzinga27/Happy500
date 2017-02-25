@@ -19,17 +19,16 @@ import { DocumentazioneComponent } from './documentazione/documentazione.compone
 import { ItemListComponent } from './item-list/item-list.component';
 import { DatiPersonaliComponent } from './dati-personali/dati-personali.component';
 import { DatiOrganizzazioneComponent } from './dati-organizzazione/dati-organizzazione.component';
+import { FormAccountComponent } from './form-account/form-account.component';
+import { FinCompletiComponent } from './fin-completi/fin-completi.component';
+import { FinIncompletiComponent } from './fin-incompleti/fin-incompleti.component';
+import { FileUploaderComponent } from './file-uploader/file-uploader.component';
 
 import {TabsService} from "./tabs.service";
 import {TypesFundingService} from "./types-funding.service";
 import {RegisterService} from "./register.service";
 import {LoginService} from "./login.service";
-import { DatiPraticaComponent } from './dati-pratica/dati-pratica.component';
-import { DocumentazioneComponent } from './documentazione/documentazione.component';
-import { FormAccountComponent } from './form-account/form-account.component';
-import { FinCompletiComponent } from './fin-completi/fin-completi.component';
-import { FinIncompletiComponent } from './fin-incompleti/fin-incompleti.component';
-import { FileUploaderComponent } from './file-uploader/file-uploader.component';
+
 import {PraticaService} from "./pratica.service";
 
 const appRoutes: Routes = [
