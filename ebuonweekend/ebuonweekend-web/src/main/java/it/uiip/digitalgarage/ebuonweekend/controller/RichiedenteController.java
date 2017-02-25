@@ -67,7 +67,7 @@ public class RichiedenteController {
                                            @RequestParam(value = "nome", defaultValue = "undefined") String nome,
                                            @RequestParam(value = "cognome", defaultValue = "undefined") String cognome,
                                            @RequestParam(value = "codFisc", defaultValue = "undefined") String codFisc,
-                                           @RequestParam(value = "dataNascita", defaultValue = "undefined") String dataNascita,
+                                           @RequestParam(value = "dataNascita", defaultValue = "1900-01-01") String dataNascita,
                                            @RequestParam(value = "cittaNascita", defaultValue = "undefined") String cittaNascita,
                                            @RequestParam(value = "provinciaNascita", defaultValue = "undefined") String provinciaNascita,
                                            @RequestParam(value = "telefono", defaultValue = "undefined") String telefono,

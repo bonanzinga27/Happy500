@@ -15,7 +15,8 @@ import static it.uiip.digitalgarage.ebuonweekend.dao.DBController.*;
 public class PraticaDAOImpl implements PraticaDAO{
 
     private final String INSERT = "INSERT INTO pratica (tipologia, importo, dataRichiesta, completata, numDipendenti, durata, iban, idRichiedente, idOrganizzazione, descrizioneProgetto, pdfPath, emailUtente) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)";
-
+    private final String UPDATE = "UPDATE pratica SET importo=?, completata=?, numDipendenti=?, durata=?, iban=?, descrizioneProgetto=? WHERE id=?";
+    private final String SELECT_BY_ID = "SELECT * FROM pratica WHERE id =?";
     private final String SELECT_ALL_FINANZIAMENTO = "SELECT * FROM tipofinanziamento";
     private static final String UPDATE_PATH = "UPDATE pratica SET pdfPath=? WHERE id=?";
 
@@ -23,7 +24,6 @@ public class PraticaDAOImpl implements PraticaDAO{
     @Override
     public boolean insert(Pratica p) {
         try{
-
             if(connectDB(INSERT)) {
                 stmt = conn.prepareStatement(INSERT, Statement.RETURN_GENERATED_KEYS);
                 stmt.setString(1, p.getTipologia());
@@ -62,7 +62,33 @@ public class PraticaDAOImpl implements PraticaDAO{
 
     @Override
     public boolean update(Pratica p) {
+        //UPDATE pratica SET importo=?, completata=?, numDipendenti=?, durata=?, iban=?, descrizioneProgetto=? WHERE id=?
+        try{
+            if(connectDB(UPDATE)){
+                stmt.setDouble(1, p.getImporto());
+                stmt.setInt(2, p.getCompletata());
+                stmt.setInt(3, p.getNumDipendenti());
+                stmt.setInt(4, p.getNumDipendenti());
+                stmt.setString(5, p.getIban());
+                stmt.setString(6, p.getDescrizioneProgetto());
+                stmt.setLong(7, p.getId());
+                int rs = stmt.executeUpdate();
+                if(rs == 0){
+                    System.out.println("Pratica non trovata!");
+                    DBController.disconnectDB();
+                    return false;
+                }
+                DBController.disconnectDB();
+                return true;
+            }
+        }catch (Exception e) {
+            // e.printStackTrace();
+            throw new RuntimeException(e);
+        } finally {
+            DBController.disconnectDB();
+        }
         return false;
+
     }
 
     @Override
@@ -88,6 +114,36 @@ public class PraticaDAOImpl implements PraticaDAO{
         } finally {
             DBController.disconnectDB();
         }
+    }
+
+    @Override
+    public Pratica selectById(String id) {
+
+        Pratica p = null;
+        try {
+
+            if(DBController.connectDB(SELECT_BY_ID)) {
+                DBController.stmt.setString(1, id);
+                DBController.rs = DBController.stmt.executeQuery();
+
+                if (DBController.rs.next()) {
+                    p = new Pratica(rs.getInt(1), rs.getString(2), rs.getDouble(3), DateUtil.parse(rs.getString(4)), rs.getInt(5), rs.getInt(6), rs.getInt(7), rs.getString(8), rs.getString(9), rs.getString(10), rs.getInt(11), rs.getInt(12), rs.getString(13));
+                    DBController.disconnectDB();
+                    return p;
+                } else {
+                    DBController.disconnectDB();
+                    return null;
+                }
+            }
+        } catch (SQLException e) {
+            // e.printStackTrace();
+            disconnectDB();
+            throw new RuntimeException(e);
+        } finally {
+            DBController.disconnectDB();
+        }
+        return p;
+
     }
 
     @Override

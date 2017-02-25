@@ -14,6 +14,7 @@ public class OrganizzazioneDAOImpl implements OrganizzazioneDAO {
 
     private final String INSERT = "INSERT INTO organizzazione (denominazione, ragioneSociale, piva, cittaSede, indirizzoSede, provinciaSede, capSede, statoSede, emailOrganizzazione) VALUES (?,?,?,?,?,?,?,?,?)";
     private final String UPDATE = "UPDATE organizzazione SET denominazione=?, ragioneSociale=?, piva=? , cittaSede=?, indirizzoSede=? ,provinciaSede=?, capSede=?, statoSede=?, emailOrganizzazione=? WHERE id=?";
+    private final String SELECT_BY_ID = "SELECT * FROM organizzazione WHERE id=?";
 
     @Override
     public boolean insert(Organizzazione o) {
@@ -85,6 +86,36 @@ public class OrganizzazioneDAOImpl implements OrganizzazioneDAO {
             DBController.disconnectDB();
         }
         return false;
+
+    }
+
+    @Override
+    public Organizzazione selectById(String id) {
+
+        Organizzazione o = null;
+        try {
+
+            if(DBController.connectDB(SELECT_BY_ID)) {
+                DBController.stmt.setString(1, id);
+                DBController.rs = DBController.stmt.executeQuery();
+
+                if (DBController.rs.next()) {
+                    o = new Organizzazione(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(9), rs.getString(10));
+                    DBController.disconnectDB();
+                    return o;
+                } else {
+                    DBController.disconnectDB();
+                    return null;
+                }
+            }
+        } catch (SQLException e) {
+            // e.printStackTrace();
+            disconnectDB();
+            throw new RuntimeException(e);
+        } finally {
+            DBController.disconnectDB();
+        }
+        return o;
 
     }
 }

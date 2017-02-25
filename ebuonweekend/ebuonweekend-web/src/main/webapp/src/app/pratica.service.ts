@@ -11,22 +11,22 @@ export class PraticaService {
     private http: Http
   ) { }
 
-  savePersonalData(user){
-    let api = 'http://localhost:8080/insertRichiedente?'+
-                          'nome='+user.nome+
+  editRichiedente(user){
+    let api = 'http://localhost:8080/editRichiedente?'+
+                          'id='+ Cookie.get('idRichiedente') +
+                          '&nome='+user.nome+
                           '&cognome='+user.cognome+
                           '&codFisc='+user.codFisc+
                           '&dataNascita='+user.dataNascita+
                           '&cittaNascita='+user.cittaNascita+
-                          '&provNascita='+user.provNascita+
+                          '&provinciaNascita='+user.provinciaNascita+
                           '&telefono='+user.telefono+
                           '&cittaResidenza='+user.cittaResidenza+
-                          '&provResidenza='+user.provResidenza+
+                          '&provinciaResidenza='+user.provinciaResidenza+
                           '&indirizzoResidenza='+user.indirizzoResidenza+
-                          '&emailUtente='+Cookie.get('email')+
                           '&emailRichiedente='+user.emailRichiedente+
                           '&cartaIdentitaPath='+user.cartaIdentitaPath+
-                          '&codiceFiscPath='+user.codiceFiscPath+
+                          '&codFiscPath='+user.codiceFiscPath+
                           '&sesso='+user.sesso;
 
     let bodyString = JSON.stringify(user); // Stringify payload
@@ -37,6 +37,8 @@ export class PraticaService {
       .map((res: Response) => res.json()) // ...and calling .json() on the response to return data
       .catch((error:any) => Observable.throw(error.json().error || 'Server error')); //...errors if any
   }
+
+
 
 
 
@@ -53,4 +55,8 @@ export class PraticaService {
               .map((res:Response) => res);
   }
 
+  getRichiedente(id) {
+    return this.http.get('http://localhost:8080/getRichiedente?id=' + id)
+      .map((res:Response) => res.json());
+  }
 }

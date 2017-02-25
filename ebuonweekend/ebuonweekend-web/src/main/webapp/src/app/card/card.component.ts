@@ -24,6 +24,9 @@ export class CardComponent implements OnInit {
     this.fundingService.nuovaPratica(nomeFinanziamento, Cookie.get('email'))
       .subscribe(risposta => {
         if (risposta.returnObject != null){
+          Cookie.set('idRichiedente', risposta.returnObject.idRichiedente);
+          Cookie.set('idOrganizzazione', risposta.returnObject.idOrganizzazione);
+          Cookie.set('idPratica', risposta.returnObject.id);
           this.router.navigate(['../pratica']);
         }else{
           console.log("errore, nella creazione della nuova pratica");

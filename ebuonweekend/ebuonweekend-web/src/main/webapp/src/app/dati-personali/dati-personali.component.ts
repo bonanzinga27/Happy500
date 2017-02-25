@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, Input} from '@angular/core';
 import { FormGroup, Validators, FormControl} from "@angular/forms";
 import {PraticaService} from "../pratica.service";
 import {Router} from "@angular/router";
+import {TabsService} from "../tabs.service";
 
 @Component({
   selector: 'app-dati-personali',
@@ -10,39 +11,39 @@ import {Router} from "@angular/router";
 })
 export class DatiPersonaliComponent implements OnInit {
 
+  @Input() dati;    //utilizzato per il two binding
+
   public datiPersonaliForm = new FormGroup({
-    nome:             new FormControl("", Validators.required),
-    cognome:          new FormControl("", Validators.required),
-    codFisc:          new FormControl("", Validators.required),
-    dataNascita:      new FormControl("", Validators.required),
-    cittaNascita:     new FormControl("", Validators.required),
-    provinciaNascita: new FormControl("", Validators.required),
-    telefono:         new FormControl("", Validators.required),
-    cittaResidenza:   new FormControl("", Validators.required),
-    provinciaResidenza:new FormControl("", Validators.required),
-    indirizzoResidenza:new FormControl("", Validators.required),
-    emailUtente:      new FormControl("", Validators.required),
-    emailRichiedente: new FormControl("", Validators.required),
-    cartaIdentitaPath:new FormControl("", Validators.required),
-    codiceFiscPath:   new FormControl("", Validators.required),
-    sesso:            new FormControl("", Validators.required)
-
+    nome:             new FormControl(),
+    cognome:          new FormControl(),
+    codFisc:          new FormControl(),
+    dataNascita:      new FormControl(),
+    cittaNascita:     new FormControl(),
+    provinciaNascita: new FormControl(),
+    telefono:         new FormControl() ,
+    cittaResidenza:   new FormControl(),
+    provinciaResidenza:new FormControl(),
+    indirizzoResidenza:new FormControl(),
+    emailRichiedente: new FormControl(),
+    cartaIdentitaPath:new FormControl(),
+    codiceFiscPath:   new FormControl(),
+    sesso:            new FormControl()
   });
-
-  datiPersonali = {};
 
   constructor(
     private praticaService:PraticaService,
-    private router:Router
+    private router:Router,
+    private tabs:TabsService
   ) { }
 
   risp = {};
 
-  salvaDatiPersonali(){
+  editRichiedente(){
     console.log(this.datiPersonaliForm.value);
-    this.praticaService.savePersonalData(this.datiPersonaliForm.value)
+    this.praticaService.editRichiedente(this.datiPersonaliForm.value)
       .subscribe(risposta => {
         if (risposta.returnObject != null){
+          this.tabs.setTab(1); /* Next tab is 1 */
           console.log("Dati Personali inviati correttamente");
         }else{
           console.log("Dati non inviati");
@@ -52,7 +53,7 @@ export class DatiPersonaliComponent implements OnInit {
   }
 
   generaCodFiscale(){
-    this.praticaService.generaCodiceFiscale(this.datiPersonali)
+    this.praticaService.generaCodiceFiscale(this.dati)
       .subscribe(risposta => {
         if (risposta != null){
             //prelevare

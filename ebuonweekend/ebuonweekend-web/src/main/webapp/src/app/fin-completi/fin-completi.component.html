@@ -1,3 +1,24 @@
-<p>
-  fin-completi works!
-</p>
+<div class="jumbotron">
+  <legend>Scarica la documentazione relativa ai tuoi finanziamneti completi</legend>
+  <div class="table-responsive">
+    <table class="table">
+      <thead>
+      <tr>
+        <th>Tipo</th>
+        <th>Richiedente</th>
+        <th>Organizzazione</th>
+        <th>Data richiesta</th>
+        <th>Riepilogo</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let campi of campiFinCompleti">
+        <td>{{campi.richiedente}}</td>
+        <td>{{campi.organizzazione}}</td>
+        <td>{{campi.data}}</td>
+        <td>{{campi.pdf}}</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
