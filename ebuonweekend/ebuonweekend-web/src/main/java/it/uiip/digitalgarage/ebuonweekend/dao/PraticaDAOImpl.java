@@ -62,9 +62,24 @@ public class PraticaDAOImpl implements PraticaDAO{
 
     @Override
     public boolean update(Pratica p) {
+        //UPDATE pratica SET importo=?, completata=?, numDipendenti=?, durata=?, iban=?, descrizioneProgetto=? WHERE id=?
         try{
             if(connectDB(UPDATE)){
-
+                stmt.setDouble(1, p.getImporto());
+                stmt.setInt(2, p.getCompletata());
+                stmt.setInt(3, p.getNumDipendenti());
+                stmt.setInt(4, p.getNumDipendenti());
+                stmt.setString(5, p.getIban());
+                stmt.setString(6, p.getDescrizioneProgetto());
+                stmt.setLong(7, p.getId());
+                int rs = stmt.executeUpdate();
+                if(rs == 0){
+                    System.out.println("Pratica non trovata!");
+                    DBController.disconnectDB();
+                    return false;
+                }
+                DBController.disconnectDB();
+                return true;
             }
         }catch (Exception e) {
             // e.printStackTrace();
