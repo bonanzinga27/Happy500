@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {FormGroup, Validators, FormControl} from "@angular/forms";
+import { FormGroup, Validators, FormControl} from "@angular/forms";
+import {PraticaService} from "../pratica.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-dati-personali',
@@ -14,10 +16,10 @@ export class DatiPersonaliComponent implements OnInit {
     codFisc:          new FormControl("", Validators.required),
     dataNascita:      new FormControl("", Validators.required),
     cittaNascita:     new FormControl("", Validators.required),
-    provNascita:      new FormControl("", Validators.required),
+    provinciaNascita: new FormControl("", Validators.required),
     telefono:         new FormControl("", Validators.required),
     cittaResidenza:   new FormControl("", Validators.required),
-    provResidenza:    new FormControl("", Validators.required),
+    provinciaResidenza:new FormControl("", Validators.required),
     indirizzoResidenza:new FormControl("", Validators.required),
     emailUtente:      new FormControl("", Validators.required),
     emailRichiedente: new FormControl("", Validators.required),
@@ -27,7 +29,38 @@ export class DatiPersonaliComponent implements OnInit {
 
   });
 
-  constructor() { }
+  constructor(
+    private praticaService:PraticaService,
+    private router:Router
+  ) { }
+
+  risp = {};
+
+  salvaDatiPersonali(){
+    console.log(this.datiPersonaliForm.value);
+    this.praticaService.savePersonalData(this.datiPersonaliForm.value)
+      .subscribe(risposta => {
+        if (risposta.returnObject != null){
+          console.log("Dati Personali inviati correttamente");
+        }else{
+          console.log("Dati non inviati");
+        }
+      });
+    console.log(this.risp);
+  }
+
+  generaCodFiscale(){
+    this.praticaService.generaCodiceFiscale(this.datiPersonaliForm.value)
+      .subscribe(risposta => {
+        if (risposta != null){
+            //prelevare
+        }else{
+          console.log("Dati non inviati");
+        }
+      });
+    console.log(this.risp);
+  }
+
 
   ngOnInit() {
   }
