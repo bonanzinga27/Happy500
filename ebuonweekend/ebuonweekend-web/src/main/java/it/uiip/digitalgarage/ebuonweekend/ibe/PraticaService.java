@@ -8,6 +8,8 @@ public interface PraticaService{
     boolean insert(Pratica p);
     boolean update(Pratica p);
     Pratica selectById(String id);
+    Pratica[] selectAllCompleted(String email);
+    Pratica[] selectAllUncompleted(String email);
 
 
 

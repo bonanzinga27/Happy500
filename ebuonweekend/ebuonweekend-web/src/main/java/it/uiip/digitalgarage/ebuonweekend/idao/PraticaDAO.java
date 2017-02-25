@@ -8,14 +8,11 @@ public interface PraticaDAO{
     boolean insert(Pratica p);
     boolean update(Pratica p);
     Pratica selectById(String id);
-
+    Pratica[] selectAllCompleted(String email);
+    Pratica[] selectAllUncompleted(String email);
     boolean updatePathPratica(Long idPratica,String path);
 
 
     TipoFinanziamento[] getAllTipoFinanziamento();
-
-
-
-
 
 }

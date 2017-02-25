@@ -45,7 +45,7 @@ public class PraticaController{
 
         if(richiedenteService.insert(r) && organizzazioneService.insert(o)){
 
-            Pratica p = new Pratica(0, tipo, 0, LocalDate.now(), 0, 0, 0, "", "", "null", r.getId(), o.getId(), email);
+            Pratica p = new Pratica(0, tipo, 0, LocalDate.now(), 0, 0, 0, "",  r.getId(), o.getId(),"", "", email);
 
             if(praticaService.insert(p)){
                 return new GenericReturn<>(p);
@@ -67,7 +67,19 @@ public class PraticaController{
                                               @RequestParam(value="iban", defaultValue = "null") String iban,
                                               @RequestParam(value="descrizioneProgetto", defaultValue = "null") String descr){
 
-        Pratica p = new Pratica(Long.valueOf(id),tipo, Double.parseDouble(importo), LocalDate.now(), Integer.parseInt(completata), Integer.parseInt(numDip), Integer.parseInt(durata), iban, descr,"", 0, 0, "" );
+        Pratica p = new Pratica(Long.valueOf(id),
+                tipo,
+                Double.parseDouble(importo),
+                LocalDate.now(),
+                Integer.parseInt(completata),
+                Integer.parseInt(numDip),
+                Integer.parseInt(durata),
+                iban,
+                0,
+                0,
+                descr,
+                "" ,
+                "");
 
         return new GenericReturn<>(praticaService.update(p));
 
@@ -80,6 +92,26 @@ public class PraticaController{
             return new GenericReturn<>(praticaService.selectById(id));
         }
         return new GenericReturn<>(null);
+    }
+
+    @CrossOrigin(origins = "http://localhost:4200")
+    @RequestMapping("/getPraticheComplete")
+    public GenericReturn<Pratica[]> getPraticheComplete(@RequestParam(value = "email", defaultValue = "null") String email){
+        if(!email.equals("null")){
+            return new GenericReturn<>(praticaService.selectAllCompleted(email));
+
+        }
+        else return new GenericReturn<>(null);
+    }
+
+    @CrossOrigin(origins = "http://localhost:4200")
+    @RequestMapping("/getPraticheNonComplete")
+    public GenericReturn<Pratica[]> getPraticheNonComplete(@RequestParam(value = "email", defaultValue = "null") String email){
+        if(!email.equals("null")){
+            return new GenericReturn<>(praticaService.selectAllUncompleted(email));
+
+        }
+        else return new GenericReturn<>(null);
     }
 
 
@@ -133,7 +165,7 @@ public class PraticaController{
                     "    <legend>Business plan</legend>\n" +
                     "    <div class=\"form-group descrizione-inline\">\n" +
                     "      <label for=\"descrizione\">Descrizione del progetto da finanziare</label>\n" +
-                    "      <textarea class=\"form-control\" id=\"descrizione\" value="+descrizione+">\n" +
+                    "      <textarea class=\"form-control\" id=\"descrizione\" value="+descrizione+"></textarea>\n" +
                     "    </div>\n" +
                     "    <div class=\"form-group importo-inline\">\n" +
                     "      <label for=\"importo\">Importo richiesto</label>\n" +
