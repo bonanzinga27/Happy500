@@ -7,9 +7,13 @@ public interface PraticaDAO{
 
     boolean insert(Pratica p);
     boolean update(Pratica p);
+    Pratica selectById(String id);
+
+    boolean updatePathPratica(Long idPratica,String path);
+
 
     TipoFinanziamento[] getAllTipoFinanziamento();
 
-    boolean updatePathPratica(Long idPratica,String path);
+
 
 }

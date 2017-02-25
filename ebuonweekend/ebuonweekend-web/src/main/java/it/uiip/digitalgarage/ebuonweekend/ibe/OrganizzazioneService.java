@@ -7,5 +7,6 @@ public interface OrganizzazioneService {
 
     boolean insert(Organizzazione o);
     boolean update(Organizzazione o);
+    Organizzazione selectById(String id);
 
 }

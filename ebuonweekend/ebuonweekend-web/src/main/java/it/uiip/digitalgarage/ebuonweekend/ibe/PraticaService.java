@@ -7,6 +7,7 @@ public interface PraticaService{
 
     boolean insert(Pratica p);
     boolean update(Pratica p);
+    Pratica selectById(String id);
 
 
 

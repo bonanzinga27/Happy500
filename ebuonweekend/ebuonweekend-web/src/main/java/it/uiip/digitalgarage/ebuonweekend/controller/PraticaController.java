@@ -64,6 +64,18 @@ public class PraticaController{
 
     }
 
+    @CrossOrigin(origins = "http://localhost:4200")
+    @RequestMapping("/getPratica")
+    public GenericReturn<Pratica> getPratica(@RequestParam(value = "id", defaultValue = "null") String id){
+        if(!id.equals("null")){
+            return new GenericReturn<>(praticaService.selectById(id));
+        }
+        return new GenericReturn<>(null);
+    }
+
+
+
+
 
     //API PER PRENDERE DAL DB TUTTI I TIPI DI FINANZIAMENTO POSSIBILI
     @CrossOrigin(origins = "http://localhost:4200")

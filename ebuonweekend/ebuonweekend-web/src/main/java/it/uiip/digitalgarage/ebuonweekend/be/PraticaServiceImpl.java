@@ -33,4 +33,9 @@ public class PraticaServiceImpl implements PraticaService {
     public TipoFinanziamento[] getAllTipoFinanziamento() {
         return praticaDAO.getAllTipoFinanziamento();
     }
+
+    @Override
+    public Pratica selectById(String id) {
+        return praticaDAO.selectById(id);
+    }
 }
