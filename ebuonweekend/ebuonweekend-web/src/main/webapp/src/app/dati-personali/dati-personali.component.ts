@@ -29,6 +29,8 @@ export class DatiPersonaliComponent implements OnInit {
 
   });
 
+  datiPersonali = {};
+
   constructor(
     private praticaService:PraticaService,
     private router:Router
@@ -50,10 +52,12 @@ export class DatiPersonaliComponent implements OnInit {
   }
 
   generaCodFiscale(){
-    this.praticaService.generaCodiceFiscale(this.datiPersonaliForm.value)
+    this.praticaService.generaCodiceFiscale(this.datiPersonali)
       .subscribe(risposta => {
         if (risposta != null){
             //prelevare
+          console.log(risposta);
+
         }else{
           console.log("Dati non inviati");
         }

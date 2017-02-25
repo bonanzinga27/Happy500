@@ -1,8 +1,12 @@
 package it.uiip.digitalgarage.ebuonweekend.controller;
 
+import it.uiip.digitalgarage.ebuonweekend.ibe.PraticaService;
 import it.uiip.digitalgarage.ebuonweekend.utils.wkhtmltopdf.Pdf;
 import it.uiip.digitalgarage.ebuonweekend.utils.wkhtmltopdf.page.PageType;
 import org.apache.commons.io.FilenameUtils;
+import org.apache.commons.io.IOUtils;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import it.uiip.digitalgarage.ebuonweekend.entity.GenericReturn;
@@ -12,10 +16,11 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.activation.MimetypesFileTypeMap;
+import javax.servlet.ServletOutputStream;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
+import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -27,6 +32,9 @@ public class UtenteController{
 	
 	@Autowired
 	UtenteService utenteService;
+	@Autowired
+	PraticaService praticaService;
+
 
 	@CrossOrigin(origins = "http://localhost:4200")
 	@RequestMapping("/register")
@@ -72,17 +80,17 @@ public class UtenteController{
 	@CrossOrigin(origins = "http://localhost:4200")
 	@RequestMapping(value = {"/uploadFile"}, headers = "content-type=multipart/*", method = RequestMethod.POST)
 	@ResponseBody
-	public GenericReturn<String> uploadAllegato(@RequestParam("file") MultipartFile file, HttpServletResponse response) throws IOException {
+	public GenericReturn<String> uploadAllegato(@RequestParam("file") MultipartFile file, @RequestParam("idPratica") Long idPratica,HttpServletResponse response) throws IOException {
 		System.out.println(file.getName() + " - " + file.getContentType());
 
-		Path dbFolder = Paths.get("/home/tomcat/e-buonweekend/profiles/");
+		Path dbFolder = Paths.get("/home/tomcat/e-buonweekend/pratiche/");
 
 		String error = "";
 
 		Boolean created = true;
 		if (Files.notExists(dbFolder)) {
 			System.out.println("path doesn't exist");
-			created = new File("/home/tomcat/e-buonweekend/profiles/").mkdirs();
+			created = new File("/home/tomcat/e-buonweekend/pratiche/").mkdirs();
 			if (created)
 				System.out.println("path created!");
 			else
@@ -90,8 +98,8 @@ public class UtenteController{
 		}
 		if (created) {
 
-			String fileName= "image_" + (Files.list(Paths.get("/home/tomcat/e-buonweekend/profiles/")).count() + 1) + "." + FilenameUtils.getExtension(file.getOriginalFilename());
-			File convFile = new File("/home/tomcat/e-buonweekend/profiles/" + fileName);
+			String fileName= "pratica_" + (Files.list(Paths.get("/home/tomcat/e-buonweekend/pratiche/")).count() + 1) + "." + FilenameUtils.getExtension(file.getOriginalFilename());
+			File convFile = new File("/home/tomcat/e-buonweekend/pratiche/" + fileName);
 
 			System.out.println(convFile.getAbsolutePath());
 			convFile.createNewFile();
@@ -99,7 +107,11 @@ public class UtenteController{
 			fos.write(file.getBytes());
 			fos.close();
 
-			String path="http://138.68.133.189/ebuonweekend-web/external/profiles/"+fileName;
+
+
+			String path=convFile.getAbsolutePath().replace("\\","/");
+
+			System.out.println(praticaService.updatePathPratica(idPratica,path));
 
 			//convFile.getAbsolutePath().replace("\\","/")
 			return new GenericReturn<>(path, null);
@@ -109,6 +121,35 @@ public class UtenteController{
 
 		}
 
+
+	}
+
+	@RequestMapping(value = {"/loadFile"}, method = RequestMethod.GET)
+	public ResponseEntity<String> downloadAllegato(@RequestParam("url") String url, HttpServletRequest request, HttpServletResponse response) {
+		try {
+			FileInputStream file = new FileInputStream(url);
+
+			MimetypesFileTypeMap mimeTypesMap = new MimetypesFileTypeMap();
+
+			// only by file name
+			String mimeType = mimeTypesMap.getContentType(url);
+			response.setContentType(mimeType);
+			response.addHeader("Content-Disposition", " filename=\"" + "pratica \"");
+			ServletOutputStream out;
+			try {
+				out = response.getOutputStream();
+				IOUtils.copy(file, out);
+				out.flush();
+				return new ResponseEntity<String>(HttpStatus.OK);
+			} catch (IOException e) {
+				e.printStackTrace();
+				return new ResponseEntity<String>(HttpStatus.INTERNAL_SERVER_ERROR);
+			}
+		}
+		catch (FileNotFoundException e){
+			e.printStackTrace();
+			return new ResponseEntity<String>(HttpStatus.INTERNAL_SERVER_ERROR);
+		}
 
 	}
 	
