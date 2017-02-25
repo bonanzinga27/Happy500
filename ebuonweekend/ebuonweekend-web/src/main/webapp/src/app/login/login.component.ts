@@ -25,7 +25,7 @@ export class LoginComponent implements OnInit {
   risp = {};
 
 
-doLogin(){
+  doLogin(){
     console.log(this.loginForm.value);
     this.loginService.login(this.loginForm.value)
       .subscribe(risposta => {

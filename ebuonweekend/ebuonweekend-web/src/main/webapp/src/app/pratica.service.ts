@@ -11,7 +11,7 @@ export class PraticaService {
     private http: Http
   ) { }
 
-  salvaDatiPersonali(user){
+  savePersonalData(user){
     let api = 'http://localhost:8080/insertRichiedente?'+
                           'nome='+user.nome+
                           '&cognome='+user.cognome+
@@ -36,6 +36,17 @@ export class PraticaService {
     return this.http.post(api, bodyString, options) // ...using post request
       .map((res: Response) => res.json()) // ...and calling .json() on the response to return data
       .catch((error:any) => Observable.throw(error.json().error || 'Server error')); //...errors if any
+  }
+
+  generaCodiceFiscale(user){
+
+    return this.http.get('http://webservices.dotnethell.it/codicefiscale.asmx/CalcolaCodiceFiscale?'+
+                    'Nome='+user.nome+
+                    '&Cognome='+user.cognome+
+                    '&ComuneNascita='+user.cittaNascita+
+                    '&DataNascita='+user.dataNascita+
+                    '&Sesso='+user.sesso)
+              .map((res:Response) => res.json());
   }
 
 }
