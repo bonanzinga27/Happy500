@@ -22,7 +22,8 @@ public class RichiedenteController {
 
     @CrossOrigin(origins = "http://localhost:4200")
     @RequestMapping("/insertRichiedente")
-    public GenericReturn<Richiedente> insertRichiedente(@RequestParam(value = "nome", defaultValue = "null") String nome,
+    public GenericReturn<Richiedente> insertRichiedente(@RequestParam(value = "tipologia", defaultValue = "null") String tipoPratica,
+                                                        @RequestParam(value = "nome", defaultValue = "null") String nome,
                                                         @RequestParam(value = "cognome", defaultValue = "null") String cognome,
                                                         @RequestParam(value = "codFisc", defaultValue = "null") String codFisc,
                                                         @RequestParam(value = "dataNascita", defaultValue = "1901-01-01") String dataNascita,
@@ -39,7 +40,8 @@ public class RichiedenteController {
                                                         @RequestParam(value = "emailUtente", defaultValue = "null") String emailUtente){
 
         if(!emailUtente.equals("null")){
-            Richiedente r = new Richiedente(0l, nome, cognome, codFisc, LocalDate.parse(dataNascita), cittaNascita, provNascita, tel, cittaRes, provRes, indRes, emailUtente, email, CIPath, codFiscPath, sesso );
+
+            Richiedente r = new Richiedente(0l, nome, cognome, codFisc, LocalDate.parse(dataNascita), cittaNascita, provNascita, tel, cittaRes, provRes, indRes, email, CIPath, codFiscPath, sesso );
             if(richiedenteService.insert(r)){
                 return new GenericReturn<>(r);
             }
@@ -77,10 +79,9 @@ public class RichiedenteController {
                                            @RequestParam(value = "codFiscPath", defaultValue = "undefined") String codFiscPath,
                                            @RequestParam(value = "sesso", defaultValue = "undefined") String sesso){
 
-        ///ebuonweekend-web/editUser?nickName=leo&firstName=Leonardo&lastName=Galati&telephone=3483401922&statoUtente=montagna&profilePicture=C:/E-Buonweekend-Uploads/image_4.jpg
 
 
-            Richiedente richiedente = new Richiedente(Long.valueOf(id), nome, cognome, codFisc, DateUtil.parse(dataNascita), cittaNascita, provinciaNascita, telefono, cittaResidenza, provinciaResidenza, indirizzoResidenza, "", emailRichiedente,cartaIdentitaPath,codFiscPath, sesso);
+            Richiedente richiedente = new Richiedente(Long.valueOf(id), nome, cognome, codFisc, DateUtil.parse(dataNascita), cittaNascita, provinciaNascita, telefono, cittaResidenza, provinciaResidenza, indirizzoResidenza,  emailRichiedente,cartaIdentitaPath,codFiscPath, sesso);
             return new GenericReturn<Boolean>(richiedenteService.update(richiedente));
 
 

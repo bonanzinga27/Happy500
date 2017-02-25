@@ -14,7 +14,7 @@ import static it.uiip.digitalgarage.ebuonweekend.dao.DBController.*;
 @Component
 public class PraticaDAOImpl implements PraticaDAO{
 
-    private final String INSERT = "INSERT INTO pratica (tipologia, importo, dataRichiesta, completata, numDipendenti, durata, iban, idRichiedente, idOrganizzazione, descrizioneProgetto, pdfPath) VALUES (?,?,?,?,?,?,?,?,?,?,?)";
+    private final String INSERT = "INSERT INTO pratica (tipologia, importo, dataRichiesta, completata, numDipendenti, durata, iban, idRichiedente, idOrganizzazione, descrizioneProgetto, pdfPath, emailUtente) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)";
 
     private final String SELECT_ALL_FINANZIAMENTO = "SELECT * FROM tipofinanziamento";
     private static final String UPDATE_PATH = "UPDATE pratica SET pdfPath=? WHERE id=?";
@@ -37,6 +37,7 @@ public class PraticaDAOImpl implements PraticaDAO{
                 stmt.setString(9, String.valueOf(p.getIdOrganizzazione()));
                 stmt.setString(10, p.getDescrizioneProgetto());
                 stmt.setString(11, p.getPdfPath());
+                stmt.setString(12, p.getEmailUtente());
 
                 int result = stmt.executeUpdate();
                 rs = stmt.getGeneratedKeys();

@@ -1,10 +1,11 @@
 package it.uiip.digitalgarage.ebuonweekend.controller;
 
-import it.uiip.digitalgarage.ebuonweekend.entity.GenericReturn;
-import it.uiip.digitalgarage.ebuonweekend.entity.Pratica;
-import it.uiip.digitalgarage.ebuonweekend.entity.TipoFinanziamento;
+import it.uiip.digitalgarage.ebuonweekend.entity.*;
+import it.uiip.digitalgarage.ebuonweekend.ibe.OrganizzazioneService;
 import it.uiip.digitalgarage.ebuonweekend.ibe.PraticaService;
+import it.uiip.digitalgarage.ebuonweekend.ibe.RichiedenteService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cglib.core.Local;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -18,22 +19,29 @@ public class PraticaController{
     @Autowired
     PraticaService praticaService;
 
+    @Autowired
+    RichiedenteService richiedenteService;
+
+    @Autowired
+    OrganizzazioneService organizzazioneService;
+
     @CrossOrigin(origins = "http://localhost:4200")
     @RequestMapping("/insertPratica")
-    public GenericReturn<Pratica> insertPratica(@RequestParam(value="tipo", defaultValue="null") String tipologia,
-                                                @RequestParam(value="importo", defaultValue = "0") String importo,
-                                                @RequestParam(value="completata", defaultValue = "0") String completata,
-                                                @RequestParam(value="numDip", defaultValue = "0") String numDip,
-                                                @RequestParam(value="durata", defaultValue = "0") String durata,
-                                                @RequestParam(value="iban", defaultValue = "null") String iban,
-                                                @RequestParam(value="descr", defaultValue = "null") String descr,
-                                                @RequestParam(value="idRich", defaultValue = "0") String idRich,
-                                                @RequestParam(value="idOrg", defaultValue = "0") String idOrg){
+    public GenericReturn<Pratica> insertPratica(@RequestParam(value="tipo", defaultValue="null") String tipo,
+                                                @RequestParam(value="email", defaultValue = "null") String email){
 
-        Pratica p = new Pratica(0, tipologia, Double.parseDouble(importo), LocalDate.now(), Integer.parseInt(completata), Integer.parseInt(numDip), Integer.parseInt(durata), iban, descr, "null", Long.parseLong(idRich), Long.parseLong(idOrg));
+        Richiedente r = new Richiedente(0l, "", "", "", LocalDate.parse("1900-01-01"), "","", "", "", "", "", "", "", "", "");
+        Organizzazione o = new Organizzazione(0, "", "", "", "", "", "", "", "", "");
 
-        if(praticaService.insert(p)){
-            return new GenericReturn<>(p);
+        if(richiedenteService.insert(r) && organizzazioneService.insert(o)){
+
+            Pratica p = new Pratica(0, tipo, 0, LocalDate.now(), 0, 0, 0, "", "", "null", r.getId(), o.getId(), email);
+
+            if(praticaService.insert(p)){
+                return new GenericReturn<>(p);
+            }
+            return new GenericReturn<>(null);
+
         }
         return new GenericReturn<>(null);
     }

@@ -16,6 +16,7 @@ public class Pratica{
 	private String pdfPath;
 	private long idRichiedente;
 	private long idOrganizzazione;
+	private String emailUtente;
 
 
 	public Pratica(long id,
@@ -29,7 +30,8 @@ public class Pratica{
 				   String descrizioneProgetto,
 				   String pdfPath,
 				   long idRichiedente,
-				   long idOrganizzazione) {
+				   long idOrganizzazione,
+				   String emailUtente) {
 
 		this.id = id;
 		this.tipologia = tipologia;
@@ -43,6 +45,7 @@ public class Pratica{
 		this.pdfPath = pdfPath;
 		this.idRichiedente = idRichiedente;
 		this.idOrganizzazione = idOrganizzazione;
+		this.emailUtente =emailUtente;
 	}
 
 	public long getId() {
@@ -139,5 +142,13 @@ public class Pratica{
 
 	public void setPdfPath(String pdfPath) {
 		this.pdfPath = pdfPath;
+	}
+
+	public String getEmailUtente() {
+		return emailUtente;
+	}
+
+	public void setEmailUtente(String emailUtente) {
+		this.emailUtente = emailUtente;
 	}
 }

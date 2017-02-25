@@ -1,6 +1,8 @@
 package it.uiip.digitalgarage.ebuonweekend.be;
 
 
+import it.uiip.digitalgarage.ebuonweekend.entity.Organizzazione;
+import it.uiip.digitalgarage.ebuonweekend.entity.Pratica;
 import it.uiip.digitalgarage.ebuonweekend.entity.Richiedente;
 import it.uiip.digitalgarage.ebuonweekend.ibe.RichiedenteService;
 import it.uiip.digitalgarage.ebuonweekend.idao.RichiedenteDAO;
@@ -14,9 +16,11 @@ public class RichiedenteServiceImpl implements RichiedenteService {
     @Autowired
     RichiedenteDAO richiedenteDAO;
 
+
     @Override
     public boolean insert(Richiedente richiedente) {
-            return richiedenteDAO.insert(richiedente);
+
+        return richiedenteDAO.insert(richiedente);
     }
 
     @Override
