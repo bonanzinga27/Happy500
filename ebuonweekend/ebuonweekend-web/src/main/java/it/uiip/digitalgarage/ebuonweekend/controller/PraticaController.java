@@ -104,6 +104,16 @@ public class PraticaController{
         else return new GenericReturn<>(null);
     }
 
+    @CrossOrigin(origins = "http://localhost:4200")
+    @RequestMapping("/getPraticheNonComplete")
+    public GenericReturn<Pratica[]> getPraticheNonComplete(@RequestParam(value = "email", defaultValue = "null") String email){
+        if(!email.equals("null")){
+            return new GenericReturn<>(praticaService.selectAllUncompleted(email));
+
+        }
+        else return new GenericReturn<>(null);
+    }
+
 
 
 

@@ -9,6 +9,7 @@ public interface PraticaService{
     boolean update(Pratica p);
     Pratica selectById(String id);
     Pratica[] selectAllCompleted(String email);
+    Pratica[] selectAllUncompleted(String email);
 
 
 
