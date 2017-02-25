@@ -17,6 +17,7 @@ export class TypesFundingService {
   }
 
   nuovaPratica(nomeFinanz, myEmail) {
+
     let api = 'http://localhost:8080/insertPratica?email='+myEmail+'&tipo='+nomeFinanz;
 
     let tmp = [
