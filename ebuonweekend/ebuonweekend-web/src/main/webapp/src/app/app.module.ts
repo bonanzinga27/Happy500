@@ -32,6 +32,7 @@ import {AccountServiceService} from "./account-service.service";
 
 import {PraticaService} from "./pratica.service";
 import { AccountListComponent } from './account-list/account-list.component';
+import { ConfermaComponent } from './conferma/conferma.component';
 
 const appRoutes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
@@ -63,7 +64,8 @@ const appRoutes: Routes = [
     FormAccountComponent,
     FinCompletiComponent,
     FinIncompletiComponent,
-    AccountListComponent
+    AccountListComponent,
+    ConfermaComponent
   ],
   imports: [
     BrowserModule,
