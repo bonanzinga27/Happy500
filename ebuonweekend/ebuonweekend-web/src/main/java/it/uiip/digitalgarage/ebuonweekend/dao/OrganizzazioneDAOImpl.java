@@ -12,7 +12,7 @@ import static it.uiip.digitalgarage.ebuonweekend.dao.DBController.*;
 @Component
 public class OrganizzazioneDAOImpl implements OrganizzazioneDAO {
 
-    private final String INSERT = "INSERT INTO organizzazione (denominazione, ragioneSociale, piva, cittaSede, indirizzoSede, provinciaSede, capSede, statoSede, emailOrganizzazione, idRichiedente) VALUES (?,?,?,?,?,?,?,?,?,?)";
+    private final String INSERT = "INSERT INTO organizzazione (denominazione, ragioneSociale, piva, cittaSede, indirizzoSede, provinciaSede, capSede, statoSede, emailOrganizzazione) VALUES (?,?,?,?,?,?,?,?,?)";
 
     @Override
     public boolean insert(Organizzazione o) {
@@ -29,7 +29,6 @@ public class OrganizzazioneDAOImpl implements OrganizzazioneDAO {
                 stmt.setString(7, o.getCapSede());
                 stmt.setString(8, o.getStatoSede());
                 stmt.setString(9, o.getEmailOrganizzazione());
-                stmt.setString(10, String.valueOf(o.getIdRichiedente()));
 
                 int result  = stmt.executeUpdate();
                 rs = stmt.getGeneratedKeys();

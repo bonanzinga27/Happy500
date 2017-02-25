@@ -12,9 +12,8 @@ public class Organizzazione {
     private String capSede;
     private String statoSede;
     private String emailOrganizzazione;
-    private int idRichiedente;
 
-    public Organizzazione(int id, String denominazione, String ragioneSociale, String piva, String cittaSede, String indirizzoSede, String provinciaSede, String capSede, String statoSede, String emailOrganizzazione, int idRichiedente) {
+    public Organizzazione(int id, String denominazione, String ragioneSociale, String piva, String cittaSede, String indirizzoSede, String provinciaSede, String capSede, String statoSede, String emailOrganizzazione) {
         this.id = id;
         this.denominazione = denominazione;
         this.ragioneSociale = ragioneSociale;
@@ -25,7 +24,6 @@ public class Organizzazione {
         this.capSede = capSede;
         this.statoSede = statoSede;
         this.emailOrganizzazione = emailOrganizzazione;
-        this.idRichiedente = idRichiedente;
     }
 
     public int getId() {
@@ -108,11 +106,4 @@ public class Organizzazione {
         this.emailOrganizzazione = emailOrganizzazione;
     }
 
-    public int getIdRichiedente() {
-        return idRichiedente;
-    }
-
-    public void setIdRichiedente(int idRichiedente) {
-        this.idRichiedente = idRichiedente;
-    }
 }

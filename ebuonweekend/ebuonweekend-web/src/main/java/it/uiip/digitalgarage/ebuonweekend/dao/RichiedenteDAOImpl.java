@@ -15,7 +15,7 @@ import java.sql.SQLException;
 public class RichiedenteDAOImpl implements RichiedenteDAO {
 
 
-    private static final String INSERT = "INSERT INTO richiedente (nome, cognome,codFisc, dataNascita, cittaNascita, provNascita, telefono, cittaResidenza, provResidenza,indirizzoResidenza,emailUtente,emailRichiedente,cartaIdentitaPath,codFiscPath, sesso) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?)";
+    private static final String INSERT = "INSERT INTO richiedente (nome, cognome,codFisc, dataNascita, cittaNascita, provNascita, telefono, cittaResidenza, provResidenza,indirizzoResidenza,emailRichiedente,cartaIdentitaPath,codFiscPath, sesso) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?)";
     private static final String UPDATE = "UPDATE richiedente SET nome=?, cognome=?, codFisc=? , dataNascita=?, cittaNascita=? ,provinciaNascita=?, telefono=?, cittaResidenza=?, provinciaResidenza=?, indirizzoResidenza=?, emailRichiedente=?, cartaIdentitaPath=?, codFiscaPath=? WHERE id=?";
     private static final String DELETE = "DELETE FROM richiedente WHERE id=?";
     private static final String SELECT_BY_ID = "SELECT * FROM richiedente WHERE id=?";
@@ -25,8 +25,8 @@ public class RichiedenteDAOImpl implements RichiedenteDAO {
     public boolean insert(Richiedente richiedente){
 
         //INSERT INTO richiedente (nome, cognome,codFisc, dataNascita, cittaNascita, provinciaNascita, telefono, cittaResidenza, provinciaResidenza,
-        //                          indirizzoResidenza,emailUtente,emailRichiedente,cartaIdentitaPath,codFiscPath)
-        // VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        //                          indirizzoResidenza,emailRichiedente,cartaIdentitaPath,codFiscPath)
+        // VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
         try {
 
@@ -45,11 +45,10 @@ public class RichiedenteDAOImpl implements RichiedenteDAO {
             DBController.stmt.setString(8, richiedente.getCittaResidenza());
             DBController.stmt.setString(9, richiedente.getProvinciaResidenza());
             DBController.stmt.setString(10, richiedente.getIndirizzoResidenza());
-            DBController.stmt.setString(11, richiedente.getEmailUtente());
-            DBController.stmt.setString(12, richiedente.getEmailRichiedente());
-            DBController.stmt.setString(13, richiedente.getCartaIdentitaPath());
-            DBController.stmt.setString(14, richiedente.getCodFiscPath());
-            stmt.setString(15, richiedente.getSesso());
+            DBController.stmt.setString(11, richiedente.getEmailRichiedente());
+            DBController.stmt.setString(12, richiedente.getCartaIdentitaPath());
+            DBController.stmt.setString(13, richiedente.getCodFiscPath());
+            DBController.stmt.setString(14, richiedente.getSesso());
 
             int result = DBController.stmt.executeUpdate();
             DBController.rs = DBController.stmt.getGeneratedKeys();
@@ -123,7 +122,7 @@ public class RichiedenteDAOImpl implements RichiedenteDAO {
                 DBController.rs = DBController.stmt.executeQuery();
 
                 if (DBController.rs.next()) {
-                    richiedente = new Richiedente(rs.getLong(1), DBController.rs.getString(2), DBController.rs.getString(3), DBController.rs.getString(4), DateUtil.parse(DBController.rs.getString(5)), DBController.rs.getString(6), DBController.rs.getString(7), DBController.rs.getString(8), DBController.rs.getString(9), DBController.rs.getString(10), DBController.rs.getString(11), DBController.rs.getString(12), DBController.rs.getString(13), DBController.rs.getString(14), DBController.rs.getString(15), rs.getString(16));
+                    richiedente = new Richiedente(rs.getLong(1), DBController.rs.getString(2), DBController.rs.getString(3), DBController.rs.getString(4), DateUtil.parse(DBController.rs.getString(5)), DBController.rs.getString(6), DBController.rs.getString(7), DBController.rs.getString(8), DBController.rs.getString(9), DBController.rs.getString(10), DBController.rs.getString(11), rs.getString(12), rs.getString(13), rs.getString(14), rs.getString(15));
 
                         DBController.disconnectDB();
                     return richiedente;
