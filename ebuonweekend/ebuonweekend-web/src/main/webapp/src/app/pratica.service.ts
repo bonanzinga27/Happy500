@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {Http, Response, Headers, RequestOptions} from "@angular/http";
 import {Observable} from "rxjs";
 import 'rxjs/add/operator/map';
+import { Cookie } from 'ng2-cookies/ng2-cookies';
 
 @Injectable()
 export class PraticaService {
@@ -22,7 +23,7 @@ export class PraticaService {
                           '&cittaResidenza='+user.cittaResidenza+
                           '&provResidenza='+user.provResidenza+
                           '&indirizzoResidenza='+user.indirizzoResidenza+
-                          '&emailUtente='+user.emailUtente+
+                          '&emailUtente='+Cookie.get('email')+
                           '&emailRichiedente='+user.emailRichiedente+
                           '&cartaIdentitaPath='+user.cartaIdentitaPath+
                           '&codiceFiscPath='+user.codiceFiscPath+
