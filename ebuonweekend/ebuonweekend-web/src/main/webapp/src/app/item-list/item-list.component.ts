@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {TabsService} from "../tabs.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-item-list',
@@ -14,9 +15,8 @@ export class ItemListComponent implements OnInit {
   private isSelected(id){
     return this.tabs.currentPage === id;
   };
-  constructor(private tabs:TabsService) { }
+  constructor(private tabs:TabsService, private router:Router) { }
 
   ngOnInit() {
   }
-
 }

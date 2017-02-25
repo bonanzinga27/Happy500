@@ -42,4 +42,9 @@ public class PraticaServiceImpl implements PraticaService {
     public Pratica[] selectAllCompleted(String email) {
         return praticaDAO.selectAllCompleted(email);
     }
+
+    @Override
+    public Pratica[] selectAllUncompleted(String email) {
+        return praticaDAO.selectAllUncompleted(email);
+    }
 }
