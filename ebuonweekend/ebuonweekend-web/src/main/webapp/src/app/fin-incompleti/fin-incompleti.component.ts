@@ -7,6 +7,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FinIncompletiComponent implements OnInit {
 
+  campiFinInSospeso = [
+    {tipologia: 'Agricola', redirect: 'path1'},
+    {tipologia: 'Privata', redirect: 'path2'},
+    {tipologia: 'Industriale', redirect: 'path3'}
+  ];
   constructor() { }
 
   ngOnInit() {

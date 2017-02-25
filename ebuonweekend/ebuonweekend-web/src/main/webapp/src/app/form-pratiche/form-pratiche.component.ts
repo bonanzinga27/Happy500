@@ -10,7 +10,7 @@ import {Cookie} from "ng2-cookies";
 })
 export class FormPraticheComponent implements OnInit {
 
-  isSelected(id){
+  public isSelected(id){
     if(id === this.tabs.currentPage){
       return true;
     }else{

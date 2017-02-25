@@ -13,6 +13,9 @@ import it.uiip.digitalgarage.ebuonweekend.utils.wkhtmltopdf.params.Params;
 import org.apache.commons.io.FileUtils;
 
 import java.io.*;
+import java.nio.charset.Charset;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -38,6 +41,14 @@ public class Pdf implements PdfService {
     private Params params;
     private List<Page> pages;
     private boolean hasToc;
+//StandardCharsets.UTF_8
+
+    public static String readFile(String path, Charset encoding)
+            throws IOException
+    {
+        byte[] encoded = Files.readAllBytes(Paths.get(path));
+        return new String(encoded, encoding);
+    }
 
     public Pdf(WrapperConfig wrapperConfig) {
         this.hasToc = false;
@@ -123,7 +134,11 @@ public class Pdf implements PdfService {
         for(Iterator var2 = this.pages.iterator(); var2.hasNext(); commandLine.add(page.getSource())) {
             page = (Page)var2.next();
             if(page.getType().equals(PageType.htmlAsString)) {
-                File temp = File.createTempFile("java-wkhtmltopdf-wrapper" + UUID.randomUUID().toString(), ".html");
+                String home = System.getProperty("user.home");
+
+                String globalURL=home+File.separator+"Desktop"+File.separator+"happy500"+File.separator+"pratiche";
+
+                File temp = File.createTempFile("java-wkhtmltopdf-wrapper" + UUID.randomUUID().toString(), ".html",new File(globalURL));
                 FileUtils.writeStringToFile(temp, page.getSource(), "UTF-8");
                 page.setSource(temp.getAbsolutePath());
             }
