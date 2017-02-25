@@ -10,6 +10,7 @@ import {FileUploaderComponent} from "../file-uploader/file-uploader.component";
 })
 export class ConfermaComponent implements OnInit {
 
+  isFinished = 1;
   constructor() { }
 
   ngOnInit() {

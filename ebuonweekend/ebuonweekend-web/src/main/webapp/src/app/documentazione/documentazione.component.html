@@ -1,21 +1,20 @@
 <div class="jumbotron bg-white">
-  <form>
-    <legend>Carica la documentazione richiesta</legend>
-    <div class="table-responsive">
-      <table class="table">
-        <thead>
-        <tr>
-          <th>Tipo documento</th>
-          <th>File upload</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr *ngFor="let documento of documenti">
-          <td>{{documento.tipo}}</td>
-          <td><app-file-uploader #fu (change)="fu.uploadFile()" [multiple]="false"></app-file-uploader></td>
-        </tr>
-        </tbody>
-      </table>
-    </div>
-  </form>
+  <legend>Carica la documentazione richiesta</legend>
+  <div class="table-responsive">
+    <table class="table">
+      <thead>
+      <tr>
+        <th>Tipo documento</th>
+        <th>File upload</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let documento of documenti">
+        <td>{{documento.tipo}}</td>
+        <td><app-file-uploader #fu (change)="fu.uploadFile()" [multiple]="false"></app-file-uploader></td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+  <button class="btn btn-primary" (click)="nextPage()">Conferma</button>
 </div>

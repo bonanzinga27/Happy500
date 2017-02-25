@@ -1,4 +1,5 @@
 import {Component, OnInit, Input} from '@angular/core';
+import {TabsService} from "../tabs.service";
 
 @Component({
   selector: 'app-documentazione',
@@ -13,7 +14,11 @@ export class DocumentazioneComponent implements OnInit {
     {tipo: 'Non lo so',},
     {tipo: 'Forse è quello giusto'},
   ];
-  constructor() { }
+
+  public nextPage(){
+    this.tabs.setTab(4);
+  }
+  constructor(private tabs:TabsService) { }
 
   ngOnInit() {
   }

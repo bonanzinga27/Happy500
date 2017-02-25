@@ -1,3 +1,16 @@
-
-<app-file-uploader #fu (change)="fu.uploadFile()" [multiple]="false"></app-file-uploader>
-<a download="pratica4.jpg" href="http://localhost:8080/loadFile?url=  C:/home/tomcat/e-buonweekend/pratiche/pratica_4.jpg">Download</a>
+<div class="jumbotron" [ngSwitch]="isFinished" >
+  <legend>Pagina di riepilogo</legend>
+  <div ngSwitchWhen="1">
+    <p>Ottimo! Hai completato tutti i campi richiesti,
+      adesso puoi scaricare il pdf di riepilogo.</p>
+    <a class="btn btn-primary"
+       download="pratica4.jpg"
+       href="http://localhost:8080/loadFile?url=  C:/home/tomcat/e-buonweekend/pratiche/pratica_4.jpg"
+    >
+      Download
+    </a>
+  </div>
+  <div ngSwitchWhen="0">
+    <p>Ops! Devi ancora completare tutti i campi richiesti.</p>
+  </div>
+</div>
