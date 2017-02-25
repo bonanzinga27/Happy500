@@ -16,7 +16,6 @@ export class FinCompletiComponent implements OnInit {
       .subscribe(risposta => {
         if (risposta.returnObject != null){
           this.campiFinCompleti = JSON.parse(JSON.stringify(risposta.returnObject));
-          alert(JSON.stringify(this.campiFinCompleti));
         }else{
           console.log("errore");
         }
