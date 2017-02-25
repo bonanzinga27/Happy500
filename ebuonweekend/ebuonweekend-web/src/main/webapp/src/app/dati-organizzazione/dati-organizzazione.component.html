@@ -1,57 +1,57 @@
 <div class="jumbotron">
-  <form>
+  <form [formGroup]="organizzazioneForm" (ngSubmit)="editOrganizzazione()" novalidate>
     <legend>Dati organizzazione</legend>
     <div class="form-group denominazione-inline">
       <label for="denominazione">Denominazione sociale</label>
-      <input type="text" class="form-control" id="denominazione" placeholder="Azienda">
+      <input type="text" class="form-control" [(ngModel)]="dati.denominazione" formControlName="denominazione" name="denominazione" id="denominazione" placeholder="Azienda">
     </div>
     <div class="form-group ragione-inline">
       <label for="ragioneSociale">Ragione sociale</label>
-      <select class="form-control" id="ragioneSociale">
+      <select class="form-control" [(ngModel)]="dati.ragioneSociale" formControlName="ragioneSociale" name="ragioneSociale" id="ragioneSociale">
         <optgroup label="Società di persone">
-          <option>S.a.s.</option>
-          <option>S.S.</option>
-          <option>S.n.c.</option>
+          <option value="S.a.s">S.a.s.</option>
+          <option value="S.S">S.S.</option>
+          <option value="S.n.c">S.n.c.</option>
         </optgroup>
         <optgroup label="Società di capitali">
-          <option>S.r.l.</option>
-          <option>S.r.l.s.</option>
-          <option>S.r.l.u.</option>
-          <option>S.p.a.</option>
-          <option>S.a.p.a.</option>
+          <option value="S.r.l">S.r.l.</option>
+          <option value="S.r.l.s">S.r.l.s.</option>
+          <option value="S.r.l.u">S.r.l.u.</option>
+          <option value="S.p.a">S.p.a.</option>
+          <option value="S.a.p.a">S.a.p.a.</option>
         </optgroup>
       </select>
     </div>
     <div class="form-group piva-inline">
       <label for="piva">Partita IVA</label>
-      <input type="text" class="form-control" id="piva" maxlength="11" minlength="11" placeholder="IVA">
+      <input type="text" class="form-control" [(ngModel)]="dati.piva" formControlName="piva" name="piva" id="piva" maxlength="11" minlength="11" placeholder="IVA">
     </div>
     <div class="form-group capitale-inline">
-      <label for="piva">Capitale</label>
-      <input type="text" class="form-control" id="capitale" maxlength="12" placeholder="Capitale">
+      <label for="cap">Capitale</label>
+      <input type="text" class="form-control" [(ngModel)]="dati.cap" formControlName="cap" name="cap" id="cap" maxlength="12" placeholder="Capitale">
     </div>
     <div class="form-group">
       <label for="email">Email aziendale</label>
-      <input type="email" class="form-control" id="email" placeholder="Email">
+      <input type="email" class="form-control" [(ngModel)]="dati.email" formControlName="email" name="email" id="email" placeholder="Email">
     </div>
     <br>
     <!-- Sede legale -->
     <legend>Sede legale</legend>
     <div class="form-group stato-inline">
       <label for="stato">Stato</label>
-      <input type="text" class="form-control" id="stato" placeholder="Stato">
+      <input type="text" class="form-control" [(ngModel)]="dati.stato" formControlName="stato" name="stato" id="stato" placeholder="Stato">
     </div>
     <div class="form-group citta-inline">
       <label for="citta">Citta</label>
-      <input type="text" class="form-control" id="citta" placeholder="Citta">
+      <input type="text" class="form-control" [(ngModel)]="dati.citta" formControlName="citta" name="citta" id="citta" placeholder="Citta">
     </div>
     <div class="form-group prov-inline">
       <label for="provincia">Provincia</label>
-      <input type="text" class="form-control" id="provincia" placeholder="Provincia">
+      <input type="text" class="form-control" [(ngModel)]="dati.provincia" formControlName="provincia" name="provincia" id="provincia" placeholder="Provincia">
     </div>
     <div class="form-group indirizzo-inline">
-      <label for="indirizzo ">Indirizzo</label>
-      <input type="text" class="form-control" id="indirizzo " placeholder="Indirizzo">
+      <label for="indirizzo">Indirizzo</label>
+      <input type="text" class="form-control" [(ngModel)]="dati.indirizzo" formControlName="indirizzo" name="indirizzo" id="indirizzo" placeholder="Indirizzo">
     </div>
     <br>
     <legend>Privacy</legend>
