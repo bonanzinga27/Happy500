@@ -1,5 +1,7 @@
 .progress-bar {
   border-right: solid 5px #EEF3FF;
+  color: #428bca;
+  background-color: #ffffff;
 }
 .progress-bar:last-child {
   border: none;

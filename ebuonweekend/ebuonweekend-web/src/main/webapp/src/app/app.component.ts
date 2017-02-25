@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Cookie } from 'ng2-cookies/ng2-cookies';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,15 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'app works!';
+  public isLogged(){
+    if (Cookie.get('email') != null){
+      return true;
+    }else{
+      return false;
+    }
+  };
+
+  logout(){
+    Cookie.deleteAll();
+  }
 }

@@ -13,14 +13,23 @@ import { FormPraticheComponent } from './form-pratiche/form-pratiche.component';
 import { CardContainerComponent } from './card-container/card-container.component';
 import { CardComponent } from './card/card.component';
 
+
+import { DatiPraticaComponent } from './dati-pratica/dati-pratica.component';
+import { DocumentazioneComponent } from './documentazione/documentazione.component';
 import { ItemListComponent } from './item-list/item-list.component';
+import { DatiPersonaliComponent } from './dati-personali/dati-personali.component';
+import { DatiOrganizzazioneComponent } from './dati-organizzazione/dati-organizzazione.component';
+import { FormAccountComponent } from './form-account/form-account.component';
+import { FinCompletiComponent } from './fin-completi/fin-completi.component';
+import { FinIncompletiComponent } from './fin-incompleti/fin-incompleti.component';
+import { FileUploaderComponent } from './file-uploader/file-uploader.component';
+
 import {TabsService} from "./tabs.service";
 import {TypesFundingService} from "./types-funding.service";
 import {RegisterService} from "./register.service";
-import { DatiPersonaliComponent } from './dati-personali/dati-personali.component';
-import { DatiOrganizzazioneComponent } from './dati-organizzazione/dati-organizzazione.component';
 import {LoginService} from "./login.service";
 
+import {PraticaService} from "./pratica.service";
 
 const appRoutes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
@@ -29,6 +38,7 @@ const appRoutes: Routes = [
   { path: 'pratica',   component: FormPraticheComponent },
   { path: 'home',   component: CardContainerComponent },
   { path: '**', redirectTo: '/login' },
+  { path: 'upload',   component: FileUploaderComponent },
 ];
 
 @NgModule({
@@ -41,7 +51,13 @@ const appRoutes: Routes = [
     CardComponent,
     ItemListComponent,
     DatiPersonaliComponent,
-    DatiOrganizzazioneComponent
+    DatiOrganizzazioneComponent,
+    FileUploaderComponent,
+    DatiPraticaComponent,
+    DocumentazioneComponent,
+    FormAccountComponent,
+    FinCompletiComponent,
+    FinIncompletiComponent
   ],
   imports: [
     BrowserModule,
@@ -55,7 +71,8 @@ const appRoutes: Routes = [
     TabsService,
     RegisterService,
     LoginService,
-    Cookie
+    Cookie,
+    PraticaService
   ],
   bootstrap: [AppComponent]
 })

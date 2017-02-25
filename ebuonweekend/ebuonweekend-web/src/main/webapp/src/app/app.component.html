@@ -4,25 +4,21 @@
     <nav id="mainNav" class="navbar navbar-inverse colore-navbar" role="navigation">
       <div class="navbar-header">
         <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#mainMenu"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
-        <a routerLink="/home" class="navbar-brand">Project</a>
+        <a routerLink="/home" class="navbar-brand">Hackathon 2017 - Digital Garage</a>
       </div>
       <div class="collapse navbar-collapse" id="mainMenu">
         <ul class="nav navbar-nav">
-          <!--<li><a href="#">Chi siamo</a></li>
-          <li class="dropdown">
-            <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" href="#">Servizi <span class="caret"></span></a>
-            <ul class="dropdown-menu" role="menu">
-              <li><a href="#">Ideazione loghi</a></li>
-              <li><a href="#">Immagine coordinata</a></li>
+          <li *ngIf="isLogged()" class="dropdown">
+            <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" href="/account">Account: {{me}} <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu" style="cursor: pointer;">
+              <li><a routerLink="/account/finanziamenti/completati">Finanziamenti completati</a></li>
+              <li><a routerLink="/account/finanziamenti/incorso">Pratiche in corso</a></li>
               <li class="divider"></li>
-              <li><a href="#">Sviluppo siti web</a></li>
-              <li><a href="#">Creazione app.</a></li>
+              <li><a (click)="logout()">Log out</a></li>
             </ul>
           </li>
-          <li><a href="#">Portfolio</a></li>
-          <li><a href="#">Contatti</a></li>-->
-          <li><a routerLink="/login">Login</a></li>
-          <li><a routerLink="/signup">Sign Up</a></li>
+          <li *ngIf="!isLogged()"><a routerLink="/login">Login</a></li>
+          <li *ngIf="!isLogged()"><a routerLink="/signup">Sign Up</a></li>
         </ul>
         <form class="navbar-form navbar-right" role="search">
           <div class="form-group">
