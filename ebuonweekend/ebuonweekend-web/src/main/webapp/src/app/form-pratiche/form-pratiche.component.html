@@ -19,7 +19,10 @@
           [dati]="datiPersonali"
     ></app-dati-personali>
 
-    <app-dati-organizzazione *ngIf="isSelected(tabs.tabList[1].id)"></app-dati-organizzazione>
+    <app-dati-organizzazione
+      *ngIf="isSelected(tabs.tabList[1].id)"
+      [dati]="datiOrganizzazione"
+    ></app-dati-organizzazione>
 
     <app-dati-pratica *ngIf="isSelected(tabs.tabList[2].id)"></app-dati-pratica>
 
