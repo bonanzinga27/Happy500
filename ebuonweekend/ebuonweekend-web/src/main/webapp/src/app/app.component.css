@@ -13,3 +13,8 @@
 .navbar-inverse .navbar-brand {
   color: white !important;
 }
+
+li>a,
+.navbar-brand{
+  margin: 5px;
+}

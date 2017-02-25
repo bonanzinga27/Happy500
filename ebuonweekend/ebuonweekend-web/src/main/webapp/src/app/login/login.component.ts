@@ -26,11 +26,9 @@ export class LoginComponent implements OnInit {
 
 
 doLogin(){
-    console.log(this.loginForm.value);
     this.loginService.login(this.loginForm.value)
       .subscribe(risposta => {
         if (risposta.returnObject != null){
-          console.log(risposta.returnObject.email);
           Cookie.set('email', risposta.returnObject.email, 1 /*days from now*/);
           Cookie.set('password', this.loginForm.value.password, 1 );
           alert("Login Effettuata");

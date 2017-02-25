@@ -22,6 +22,9 @@ import { DatiOrganizzazioneComponent } from './dati-organizzazione/dati-organizz
 import {LoginService} from "./login.service";
 import { DatiPraticaComponent } from './dati-pratica/dati-pratica.component';
 import { DocumentazioneComponent } from './documentazione/documentazione.component';
+import { FormAccountComponent } from './form-account/form-account.component';
+import { FinCompletiComponent } from './fin-completi/fin-completi.component';
+import { FinIncompletiComponent } from './fin-incompleti/fin-incompleti.component';
 
 
 const appRoutes: Routes = [
@@ -45,7 +48,10 @@ const appRoutes: Routes = [
     DatiPersonaliComponent,
     DatiOrganizzazioneComponent,
     DatiPraticaComponent,
-    DocumentazioneComponent
+    DocumentazioneComponent,
+    FormAccountComponent,
+    FinCompletiComponent,
+    FinIncompletiComponent
   ],
   imports: [
     BrowserModule,
