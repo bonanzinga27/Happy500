@@ -7,6 +7,12 @@ import {Component, OnInit, Input} from '@angular/core';
 })
 export class DocumentazioneComponent implements OnInit {
 
+  documenti = [
+    {tipo: 'Carta identità'},
+    {tipo: 'Codice fiscale'},
+    {tipo: 'Non lo so',},
+    {tipo: 'Forse è quello giusto'},
+  ];
   constructor() { }
 
   ngOnInit() {
