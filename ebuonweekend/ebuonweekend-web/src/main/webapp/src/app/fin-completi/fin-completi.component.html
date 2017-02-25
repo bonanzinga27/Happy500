@@ -13,10 +13,11 @@
       </thead>
       <tbody>
       <tr *ngFor="let campi of campiFinCompleti">
+        <td>{{campi.tipologia}}</td>
         <td>{{campi.richiedente}}</td>
         <td>{{campi.organizzazione}}</td>
         <td>{{campi.data}}</td>
-        <td>{{campi.pdf}}</td>
+        <td><a href="{{campi.pdf}}" >PDF</a></td>
       </tr>
       </tbody>
     </table>
