@@ -38,15 +38,19 @@ export class PraticaService {
       .catch((error:any) => Observable.throw(error.json().error || 'Server error')); //...errors if any
   }
 
+
+
   generaCodiceFiscale(user){
+
+    let data = user.dataNascita.split("-");
 
     return this.http.get('http://webservices.dotnethell.it/codicefiscale.asmx/CalcolaCodiceFiscale?'+
                     'Nome='+user.nome+
                     '&Cognome='+user.cognome+
                     '&ComuneNascita='+user.cittaNascita+
-                    '&DataNascita='+user.dataNascita+
+                    '&DataNascita='+data[2]+"/"+data[1]+"/"+data[0]+
                     '&Sesso='+user.sesso)
-              .map((res:Response) => res.json());
+              .map((res:Response) => res);
   }
 
 }

@@ -16,4 +16,9 @@ public class OrganizzazioneServiceImpl implements OrganizzazioneService {
     public boolean insert(Organizzazione o) {
         return organizzazioneDAO.insert(o);
     }
+
+    @Override
+    public boolean update(Organizzazione o) {
+        return organizzazioneDAO.update(o);
+    }
 }

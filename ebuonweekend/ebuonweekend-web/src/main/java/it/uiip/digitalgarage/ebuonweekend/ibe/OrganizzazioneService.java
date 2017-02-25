@@ -6,5 +6,6 @@ import it.uiip.digitalgarage.ebuonweekend.entity.Organizzazione;
 public interface OrganizzazioneService {
 
     boolean insert(Organizzazione o);
+    boolean update(Organizzazione o);
 
 }

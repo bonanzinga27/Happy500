@@ -40,21 +40,10 @@ public class UtenteController{
 	@RequestMapping("/register")
 	public GenericReturn<Utente> register(@RequestParam(value = "email", defaultValue = "undefined") String email,
 										  @RequestParam(value = "pass", defaultValue="undefined") String password){
-		try {
 
-
-		Pdf pdf = new Pdf();
-		pdf.addPage("http://localhost:4200/#jkjkj", PageType.url);
-		// pdf.addToc();
-			pdf.saveAs("C:"+ File.separator+"Users"+ File.separator+"gvasa"+ File.separator+"Desktop"+ File.separator+ "test.pdf");
-		} catch ( IOException | InterruptedException e) {
-			e.printStackTrace();
-		}
-
-			List<String> err = new ArrayList<>();
+		List<String> err = new ArrayList<>();
 
 		if(!email.equals("undefined") && !password.equals("undefined")){
-			
 			
 			Utente u = new Utente(0, email, password);
 			
