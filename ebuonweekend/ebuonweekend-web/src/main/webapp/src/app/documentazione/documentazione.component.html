@@ -1,32 +1,21 @@
 <div class="jumbotron bg-white">
   <form>
-    <legend>Business plan</legend>
-    <div class="form-group descrizione-inline">
-      <label for="descrizione">Descrizione del progetto da finanziare</label>
-      <textarea class="form-control" id="descrizione" placeholder="Descrizione dettagliata"></textarea>
-      <small id="descrizioneHelp" class="form-text text-muted">Inserire minimo 400 caratteri.</small>
+    <legend>Carica la documentazione richiesta</legend>
+    <div class="table-responsive">
+      <table class="table">
+        <thead>
+        <tr>
+          <th>Tipo documento</th>
+          <th>File upload</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let documento of documenti">
+          <td>{{documento.tipo}}</td>
+          <td><app-file-uploader #fu (change)="fu.uploadFile()" [multiple]="false"></app-file-uploader></td>
+        </tr>
+        </tbody>
+      </table>
     </div>
-    <div class="form-group importo-inline">
-      <label for="importo">Importo richiesto</label>
-      <input type="text" class="form-control" id="importo" placeholder="Importo">
-      <small id="importoHelp" class="form-text text-muted">Importo espresso in euro</small>
-    </div>
-    <div class="form-group dipendenti-inline">
-      <label for="dipendenti">Numero dipendenti</label>
-      <input type="text" class="form-control" id="dipendenti" placeholder="Dipendenti">
-      <small id="dipendentiHelp" class="form-text text-muted">Dipendenti organizzazione</small>
-    </div>
-    <div class="form-group durata-inline">
-      <label for="durata">Durata finanziamento</label>
-      <select class="form-control" id="durata">
-        <option>12</option>
-        <option>18</option>
-        <option>24</option>
-        <option>30</option>
-        <option>36</option>
-      </select>
-      <small id="durataHelp" class="form-text text-muted">Durata in mesi</small>
-    </div>
-    <button type="submit" class="btn btn-primary">Submit</button>
   </form>
 </div>
