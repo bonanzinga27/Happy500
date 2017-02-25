@@ -21,6 +21,7 @@ import { DatiPersonaliComponent } from './dati-personali/dati-personali.componen
 import { DatiOrganizzazioneComponent } from './dati-organizzazione/dati-organizzazione.component';
 import {LoginService} from "./login.service";
 import { DatiPraticaComponent } from './dati-pratica/dati-pratica.component';
+import { DocumentazioneComponent } from './documentazione/documentazione.component';
 
 
 const appRoutes: Routes = [
@@ -43,7 +44,8 @@ const appRoutes: Routes = [
     ItemListComponent,
     DatiPersonaliComponent,
     DatiOrganizzazioneComponent,
-    DatiPraticaComponent
+    DatiPraticaComponent,
+    DocumentazioneComponent
   ],
   imports: [
     BrowserModule,
