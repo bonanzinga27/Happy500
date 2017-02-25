@@ -1,0 +1,5 @@
+<div class="col col-sm-4 col col-lg-4 col-md-4 ">
+  <div class="list-group">
+    <a *ngFor="let tab of tabs.tabAccount" (click)="setTab(tab.id)" [ngClass]="{active: isSelected(tab.id)}" class="list-group-item">{{tab.title}}</a>
+  </div>
+</div>

@@ -9,10 +9,10 @@
       <div class="collapse navbar-collapse" id="mainMenu">
         <ul class="nav navbar-nav">
           <li *ngIf="isLogged()" class="dropdown">
-            <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" href="/account">Account: {{me}} <span class="caret"></span></a>
+            <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" routerLink="/account">Account:{{me}} <span class="caret"></span></a>
             <ul class="dropdown-menu" role="menu" style="cursor: pointer;">
-              <li><a routerLink="/account/finanziamenti/completati">Finanziamenti completati</a></li>
-              <li><a routerLink="/account/finanziamenti/incorso">Pratiche in corso</a></li>
+              <li><a routerLink="/account/completate">Finanziamenti completati</a></li>
+              <li><a routerLink="/account/sospese">Pratiche in sospeso</a></li>
               <li class="divider"></li>
               <li><a (click)="logout()">Log out</a></li>
             </ul>

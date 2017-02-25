@@ -28,8 +28,10 @@ import {TabsService} from "./tabs.service";
 import {TypesFundingService} from "./types-funding.service";
 import {RegisterService} from "./register.service";
 import {LoginService} from "./login.service";
+import {AccountServiceService} from "./account-service.service";
 
 import {PraticaService} from "./pratica.service";
+import { AccountListComponent } from './account-list/account-list.component';
 
 const appRoutes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
@@ -37,6 +39,9 @@ const appRoutes: Routes = [
   { path: 'signup', component: SignupComponent },
   { path: 'pratica',   component: FormPraticheComponent },
   { path: 'home',   component: CardContainerComponent },
+  { path: 'account',   component: FormAccountComponent },
+  { path: 'account',   component: FinCompletiComponent },
+  { path: 'account',   component: FinIncompletiComponent },
   { path: '**', redirectTo: '/login' },
   { path: 'upload',   component: FileUploaderComponent },
 ];
@@ -57,7 +62,8 @@ const appRoutes: Routes = [
     DocumentazioneComponent,
     FormAccountComponent,
     FinCompletiComponent,
-    FinIncompletiComponent
+    FinIncompletiComponent,
+    AccountListComponent
   ],
   imports: [
     BrowserModule,
@@ -72,7 +78,8 @@ const appRoutes: Routes = [
     RegisterService,
     LoginService,
     Cookie,
-    PraticaService
+    PraticaService,
+    AccountServiceService
   ],
   bootstrap: [AppComponent]
 })

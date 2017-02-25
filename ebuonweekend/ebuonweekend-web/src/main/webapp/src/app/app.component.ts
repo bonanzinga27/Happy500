@@ -7,6 +7,7 @@ import { Cookie } from 'ng2-cookies/ng2-cookies';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+  me = Cookie.get('email');
   public isLogged(){
     if (Cookie.get('email') != null){
       return true;

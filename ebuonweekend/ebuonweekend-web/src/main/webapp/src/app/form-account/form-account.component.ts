@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, Input} from '@angular/core';
+import {AccountServiceService} from "../account-service.service";
 
 @Component({
   selector: 'app-form-account',
@@ -7,7 +8,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FormAccountComponent implements OnInit {
 
-  constructor() { }
+  @Input() actualTab;
+
+  public setTabExt(){
+    this.tabs.currentPage = actualTab;
+  }
+  public isSelected(id){
+    if(id === this.tabs.currentPage){
+      return true;
+    }else{
+      return false;
+    }
+  }
+  constructor(private tabs:AccountServiceService) { }
 
   ngOnInit() {
   }

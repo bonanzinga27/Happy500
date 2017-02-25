@@ -1,3 +1,14 @@
-<p>
-  form-account works!
-</p>
+<div class="jumbotron" >
+  <p>
+    <b>Conrolla lo stato delle tue pratiche che si suddividono in completate e in sospeso</b>
+  </p>
+</div>
+<div class="row">
+  <!-- Tab item list -->
+  <app-account-list>Loading item list...</app-account-list>
+  <!-- Progressive bar -->
+  <div class="col col-sm-8 col-lg-8 col-md-8">
+    <app-fin-completi *ngIf="isSelected(tabs.tabAccount[0].id)"></app-fin-completi>
+    <app-fin-incompleti *ngIf="isSelected(tabs.tabAccount[1].id)"></app-fin-incompleti>
+  </div>
+</div>
