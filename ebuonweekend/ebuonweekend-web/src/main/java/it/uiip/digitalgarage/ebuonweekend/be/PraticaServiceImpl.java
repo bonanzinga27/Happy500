@@ -15,7 +15,6 @@ public class PraticaServiceImpl implements PraticaService {
 
     @Override
     public boolean insert(Pratica p) {
-
         return praticaDAO.insert(p);
     }
 
@@ -37,5 +36,10 @@ public class PraticaServiceImpl implements PraticaService {
     @Override
     public Pratica selectById(String id) {
         return praticaDAO.selectById(id);
+    }
+
+    @Override
+    public Pratica[] selectAllCompleted(String email) {
+        return praticaDAO.selectAllCompleted(email);
     }
 }
