@@ -1,42 +1,42 @@
 <div class="jumbotron">
-  <form [formGroup]="datiPersonaliForm" (ngSubmit)="salvaDatiPersonali()">
+  <form [formGroup]="datiPersonaliForm" (ngSubmit)="datiPersonaliForm.$isValid && salvaDatiPersonali()">
     <legend>Dati anagrafici</legend>
     <div class="form-group nome-cognome-inline">
       <label for="nome">Nome richiedente</label>
-      <input type="text" class="form-control" formControlName="nome" name="nome" id="nome" placeholder="Nome">
+      <input type="text" class="form-control" [(ngModel)]="datiPersonali.nome" formControlName="nome" name="nome" id="nome" placeholder="Nome" required>
     </div>
     <div class="form-group nome-cognome-inline">
       <label for="cognome">Cognome richiedente</label>
-      <input type="text" class="form-control" formControlName="cognome" name="cognome" id="cognome" placeholder="Cognome">
+      <input type="text" class="form-control" [(ngModel)]="datiPersonali.cognome" formControlName="cognome" name="cognome" id="cognome" placeholder="Cognome" required>
     </div>
     <div class="form-group sesso-inline">
       <label for="sesso">Sesso:</label>
-      <select class="form-control" formControlName="sesso" name="sesso" id="sesso">
+      <select class="form-control" [(ngModel)]="datiPersonali.sesso" formControlName="sesso" name="sesso" id="sesso" required>
         <option>M</option>
         <option>F</option>
       </select>
     </div>
     <div class="form-group prov-inline">
       <label for="provinciaNascita">Provincia di nascita</label>
-      <input type="text" class="form-control" formControlName="provinciaNascita" name="provinciaNascita" id="provinciaNascita" maxlength="2" minlength="2" placeholder="Provincia">
+      <input type="text" class="form-control" [(ngModel)]="datiPersonali.provinciaNascita" formControlName="provinciaNascita" name="provinciaNascita" id="provinciaNascita" maxlength="2" minlength="2" placeholder="Provincia" required>
     </div>
     <div class="form-group citta-inline">
       <label for="cittaNascita">Città di nascita</label>
-      <input type="text" class="form-control" formControlName="cittaNascita" name="cittaNascita" id="cittaNascita" placeholder="Città">
+      <input type="text" class="form-control" [(ngModel)]="datiPersonali.cittaNascita" formControlName="cittaNascita" name="cittaNascita" id="cittaNascita" placeholder="Città" required>
     </div>
     <div class="form-group email-inline">
       <label for="emailRichiedente">Email richiedente</label>
-      <input type="text" class="form-control" formControlName="emailRichiedente" name="emailRichiedente" id="emailRichiedente" placeholder="Email">
+      <input type="text" class="form-control" [(ngModel)]="datiPersonali.emailRichiedente" formControlName="emailRichiedente" name="emailRichiedente" id="emailRichiedente" placeholder="Email" required>
       <br>
     </div>
     <div class="form-group nascita-inline">
       <label for="dataNascita">Data di nascita</label>
-      <input type="date" class="form-control" formControlName="dataNascita" name="dataNascita" id="dataNascita">
+      <input type="date" class="form-control" [(ngModel)]="datiPersonali.dataNascita" formControlName="dataNascita" name="dataNascita" id="dataNascita" required>
       <small id="nascitaHelp" class="form-text text-muted">Formato gg/mm/aaaa</small>
     </div>
     <div class="form-group">
       <label for="codFisc">Codice fiscale</label>
-      <input type="text" class="form-control" formControlName="codFisc" name="codFisc" id="codFisc" minlength="16" maxlength="16" placeholder="Inserisci codice fiscale">
+      <input type="text" class="form-control" [(ngModel)]="datiPersonali.codFisc" formControlName="codFisc" name="codFisc" id="codFisc" minlength="16" maxlength="16" placeholder="Inserisci codice fiscale" required>
       <button id="calcolaCF" (click)="generaCodFiscale()" class="btn btn-primary">Calcola codice fiscale</button>
       <!--
       http://webservices.dotnethell.it/codicefiscale.asmx/
@@ -47,19 +47,19 @@
     <legend>Dati personali</legend>
     <div class="form-group">
       <label for="indirizzoResidenza">Indirizzo di residenza</label>
-      <input type="text" class="form-control" formControlName="indirizzoResidenza" name="indirizzoResidenza" id="indirizzoResidenza" placeholder="Indirizzo">
+      <input type="text" class="form-control" [(ngModel)]="datiPersonali.indirizzoResidenza" formControlName="indirizzoResidenza" name="indirizzoResidenza" id="indirizzoResidenza" placeholder="Indirizzo" required>
     </div>
     <div class="form-group prov-inline">
       <label for="provinciaResidenza">Provincia</label>
-      <input type="text" class="form-control" formControlName="provinciaResidenza" name="provinciaResidenza" id="provinciaResidenza" maxlength="2" minlength="2" aria-describedby="provinciaHelp" placeholder="Provincia">
+      <input type="text" class="form-control" [(ngModel)]="datiPersonali.provinciaResidenza" formControlName="provinciaResidenza" name="provinciaResidenza" id="provinciaResidenza" maxlength="2" minlength="2" aria-describedby="provinciaHelp" placeholder="Provincia" required>
     </div>
     <div class="form-group citta-inline">
       <label for="cittaResidenza">Città</label>
-      <input type="text" class="form-control" formControlName="cittaResidenza" name="cittaResidenza" id="cittaResidenza" placeholder="Città">
+      <input type="text" class="form-control" [(ngModel)]="datiPersonali.cittaResidenza" formControlName="cittaResidenza" name="cittaResidenza" id="cittaResidenza" placeholder="Città" required>
     </div>
     <div class="form-group">
       <label for="telefono">Recapito telefonico</label>
-      <input type="text" class="form-control" formControlName="telefono" name="telefono" id="telefono" maxlength="15" placeholder="Telefono">
+      <input type="text" class="form-control" [(ngModel)]="datiPersonali.telefono" formControlName="telefono" name="telefono" id="telefono" maxlength="15" placeholder="Telefono" required>
     </div>
     <br>
     <legend>Privacy</legend>
