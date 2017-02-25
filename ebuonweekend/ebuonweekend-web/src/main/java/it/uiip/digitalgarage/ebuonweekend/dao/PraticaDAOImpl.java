@@ -17,6 +17,7 @@ public class PraticaDAOImpl implements PraticaDAO{
     private final String INSERT = "INSERT INTO pratica (tipologia, importo, dataRichiesta, completata, numDipendenti, durata, iban, idRichiedente, idOrganizzazione, descrizioneProgetto, pdfPath, emailUtente) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)";
     private final String UPDATE = "UPDATE pratica SET importo=?, completata=?, numDipendenti=?, durata=?, iban=?, descrizioneProgetto=? WHERE id=?";
     private final String SELECT_BY_ID = "SELECT * FROM pratica WHERE id =?";
+    private final String SELECT_ALL_COMPLETED = "SELECT pratica.*, richiedente.codFisc, organizzazione.denominazione FROM (pratica INNER JOIN richiedente on pratica.idRichiedente=richiedente.id) INNER JOIN organizzazione on pratica.idOrganizzazione=organizzazione.id where pratica.completata=1 AND pratica.emailUtente=?";
     private final String SELECT_ALL_FINANZIAMENTO = "SELECT * FROM tipofinanziamento";
     private static final String UPDATE_PATH = "UPDATE pratica SET pdfPath=? WHERE id=?";
 
@@ -127,7 +128,7 @@ public class PraticaDAOImpl implements PraticaDAO{
                 DBController.rs = DBController.stmt.executeQuery();
 
                 if (DBController.rs.next()) {
-                    p = new Pratica(rs.getInt(1), rs.getString(2), rs.getDouble(3), DateUtil.parse(rs.getString(4)), rs.getInt(5), rs.getInt(6), rs.getInt(7), rs.getString(8), rs.getString(9), rs.getString(10), rs.getInt(11), rs.getInt(12), rs.getString(13));
+                    p = new Pratica(rs.getLong(1), rs.getString(2), rs.getDouble(3), DateUtil.parse(rs.getString(4)), rs.getInt(5), rs.getInt(6), rs.getInt(7), rs.getString(8), rs.getLong(9), rs.getLong(10), rs.getString(11), rs.getString(12), rs.getString(13));
                     DBController.disconnectDB();
                     return p;
                 } else {
@@ -178,5 +179,39 @@ public class PraticaDAOImpl implements PraticaDAO{
             disconnectDB();
         }
         return t;
+    }
+
+    @Override
+    public Pratica[] selectAllCompleted(String email) {
+        Pratica[] p = null;
+        int i = 0;
+        try{
+            if(connectDB(SELECT_ALL_COMPLETED)){
+                stmt.setString(1, email);
+
+                rs = stmt.executeQuery();
+                if(rs.next()){
+                    rs.last();
+                    p = new Pratica[rs.getRow()];
+                    rs.first();
+                    do{
+                        p[i]=new Pratica(rs.getLong(1), rs.getString(2), rs.getDouble(3), DateUtil.parse(rs.getString(4)), rs.getInt(5), rs.getInt(6), rs.getInt(7), rs.getString(8), rs.getLong(9), rs.getLong(10), rs.getString(11), rs.getString(12), rs.getString(13));
+                        p[i].setCodFiscRich(rs.getString(14));
+                        p[i].setDenomOrg(rs.getString(15));
+                        rs.next();
+                        i++;
+                    }while(i<p.length);
+                }
+            }
+
+        }catch (SQLException e) {
+            // e.printStackTrace();
+            disconnectDB();
+            throw new RuntimeException(e);
+        } finally {
+            disconnectDB();
+        }
+        return p;
+
     }
 }

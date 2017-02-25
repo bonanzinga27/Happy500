@@ -17,6 +17,8 @@ public class Pratica{
 	private long idRichiedente;
 	private long idOrganizzazione;
 	private String emailUtente;
+	private String codFiscRich;
+	private String denomOrg;
 
 
 	public Pratica(long id,
@@ -27,10 +29,10 @@ public class Pratica{
 				   int numDipendenti,
 				   int durata,
 				   String iban,
-				   String descrizioneProgetto,
-				   String pdfPath,
 				   long idRichiedente,
 				   long idOrganizzazione,
+				   String descrizioneProgetto,
+				   String pdfPath,
 				   String emailUtente) {
 
 		this.id = id;
@@ -46,6 +48,8 @@ public class Pratica{
 		this.idRichiedente = idRichiedente;
 		this.idOrganizzazione = idOrganizzazione;
 		this.emailUtente =emailUtente;
+		this.codFiscRich = null;
+		this.denomOrg = null;
 	}
 
 	public long getId() {
@@ -150,5 +154,21 @@ public class Pratica{
 
 	public void setEmailUtente(String emailUtente) {
 		this.emailUtente = emailUtente;
+	}
+
+	public String getCodFiscRich() {
+		return codFiscRich;
+	}
+
+	public void setCodFiscRich(String codFiscRich) {
+		this.codFiscRich = codFiscRich;
+	}
+
+	public String getDenomOrg() {
+		return denomOrg;
+	}
+
+	public void setDenomOrg(String denomOrg) {
+		this.denomOrg = denomOrg;
 	}
 }
