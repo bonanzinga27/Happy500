@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, Input} from '@angular/core';
 import { FormGroup, Validators, FormControl} from "@angular/forms";
 import {PraticaService} from "../pratica.service";
 import {Router} from "@angular/router";
@@ -9,6 +9,8 @@ import {Router} from "@angular/router";
   styleUrls: ['./dati-personali.component.css']
 })
 export class DatiPersonaliComponent implements OnInit {
+
+  @Input() dati;    //utilizzato per il two binding
 
   public datiPersonaliForm = new FormGroup({
     nome:             new FormControl("", Validators.required),
@@ -21,15 +23,12 @@ export class DatiPersonaliComponent implements OnInit {
     cittaResidenza:   new FormControl("", Validators.required),
     provinciaResidenza:new FormControl("", Validators.required),
     indirizzoResidenza:new FormControl("", Validators.required),
-    emailUtente:      new FormControl("", Validators.required),
     emailRichiedente: new FormControl("", Validators.required),
     cartaIdentitaPath:new FormControl("", Validators.required),
     codiceFiscPath:   new FormControl("", Validators.required),
     sesso:            new FormControl("", Validators.required)
 
   });
-
-  datiPersonali = {};
 
   constructor(
     private praticaService:PraticaService,
@@ -38,9 +37,9 @@ export class DatiPersonaliComponent implements OnInit {
 
   risp = {};
 
-  salvaDatiPersonali(){
+  editRichiedente(){
     console.log(this.datiPersonaliForm.value);
-    this.praticaService.savePersonalData(this.datiPersonaliForm.value)
+    this.praticaService.editRichiedente(this.datiPersonaliForm.value)
       .subscribe(risposta => {
         if (risposta.returnObject != null){
           console.log("Dati Personali inviati correttamente");
@@ -52,7 +51,7 @@ export class DatiPersonaliComponent implements OnInit {
   }
 
   generaCodFiscale(){
-    this.praticaService.generaCodiceFiscale(this.datiPersonali)
+    this.praticaService.generaCodiceFiscale(this.dati)
       .subscribe(risposta => {
         if (risposta != null){
             //prelevare
