@@ -9,4 +9,6 @@ public interface PraticaDAO{
 
     TipoFinanziamento[] getAllTipoFinanziamento();
 
+    boolean updatePathPratica(Long idPratica,String path);
+
 }
