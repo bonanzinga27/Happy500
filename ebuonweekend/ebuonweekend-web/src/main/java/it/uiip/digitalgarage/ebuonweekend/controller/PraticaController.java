@@ -165,7 +165,7 @@ public class PraticaController{
                     "    <legend>Business plan</legend>\n" +
                     "    <div class=\"form-group descrizione-inline\">\n" +
                     "      <label for=\"descrizione\">Descrizione del progetto da finanziare</label>\n" +
-                    "      <textarea class=\"form-control\" id=\"descrizione\" value="+descrizione+">\n" +
+                    "      <textarea class=\"form-control\" id=\"descrizione\" value="+descrizione+"></textarea>\n" +
                     "    </div>\n" +
                     "    <div class=\"form-group importo-inline\">\n" +
                     "      <label for=\"importo\">Importo richiesto</label>\n" +
