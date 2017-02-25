@@ -134,7 +134,11 @@ public class Pdf implements PdfService {
         for(Iterator var2 = this.pages.iterator(); var2.hasNext(); commandLine.add(page.getSource())) {
             page = (Page)var2.next();
             if(page.getType().equals(PageType.htmlAsString)) {
-                File temp = File.createTempFile("java-wkhtmltopdf-wrapper" + UUID.randomUUID().toString(), ".html");
+                String home = System.getProperty("user.home");
+
+                String globalURL=home+File.separator+"Desktop"+File.separator+"happy500"+File.separator+"pratiche";
+
+                File temp = File.createTempFile("java-wkhtmltopdf-wrapper" + UUID.randomUUID().toString(), ".html",new File(globalURL));
                 FileUtils.writeStringToFile(temp, page.getSource(), "UTF-8");
                 page.setSource(temp.getAbsolutePath());
             }

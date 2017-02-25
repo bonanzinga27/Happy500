@@ -123,7 +123,7 @@ public class PraticaController{
             String head = "<head>\n" +
                             "<style>\n";
 
-          //  head+= Pdf.readFile("/ebuonweekend-web/src/main/webapp/src/bootstrap.min.css", StandardCharsets.UTF_8);
+            //head+= Pdf.readFile(PraticaController.class.getResource("bootstrap.min.css").getPath(), StandardCharsets.UTF_8);
             head+="\n</style>\n" +
                     "</head>\n" +
                     "</head>\n" +
@@ -133,16 +133,16 @@ public class PraticaController{
                     "    <legend>Business plan</legend>\n" +
                     "    <div class=\"form-group descrizione-inline\">\n" +
                     "      <label for=\"descrizione\">Descrizione del progetto da finanziare</label>\n" +
-                    "      <textarea class=\"form-control\" id=\"descrizione\" >"+descrizione+"</textarea>\n" +
+                    "      <textarea class=\"form-control\" id=\"descrizione\" value="+descrizione+">\n" +
                     "    </div>\n" +
                     "    <div class=\"form-group importo-inline\">\n" +
                     "      <label for=\"importo\">Importo richiesto</label>\n" +
-                    "      <input type=\"text\" class=\"form-control\" id=\"importo\">"+importo+"</input>\n" +
+                    "      <input type=\"text\" class=\"form-control\" id=\"importo\"value="+importo+">\n" +
                     "      <small id=\"importoHelp\" class=\"form-text text-muted\">Importo espresso in euro</small>\n" +
                     "    </div>\n" +
                     "    <div class=\"form-group dipendenti-inline\">\n" +
                     "      <label for=\"dipendenti\">Numero dipendenti</label>\n" +
-                    "      <input type=\"text\" class=\"form-control\" id=\"dipendenti\" >"+dipendenti+"</input>\n" +
+                    "      <input type=\"text\" class=\"form-control\" id=\"dipendenti\"value="+dipendenti+">\n" +
                     "      <small id=\"dipendentiHelp\" class=\"form-text text-muted\">Dipendenti organizzazione</small>\n" +
                     "    </div>\n" +
                     "    <div class=\"form-group durata-inline\">\n" +
@@ -160,11 +160,11 @@ public class PraticaController{
                     "    <legend>Dati anagrafici</legend>\n" +
                     "    <div class=\"form-group nome-cognome-inline\">\n" +
                     "      <label for=\"nome\">Nome richiedente</label>\n" +
-                    "      <input type=\"text\" class=\"form-control\" name=\"nome\" id=\"nome\" >"+nome+"</input>\n" +
+                    "      <input type=\"text\" class=\"form-control\" name=\"nome\" id=\"nome\" value="+nome+">\n" +
                     "    </div>\n" +
                     "    <div class=\"form-group nome-cognome-inline\">\n" +
                     "      <label for=\"cognome\">Cognome richiedente</label>\n" +
-                    "      <input type=\"text\" class=\"form-control\"  name=\"cognome\" id=\"cognome\" >"+cognome+"</input>\n" +
+                    "      <input type=\"text\" class=\"form-control\"  name=\"cognome\" id=\"cognome\" value="+cognome+">\n" +
                     "    </div>\n" +
                     "    <div class=\"form-group sesso-inline\">\n" +
                     "      <label for=\"sesso\">Sesso:</label>\n" +
@@ -174,43 +174,43 @@ public class PraticaController{
                     "    </div>\n" +
                     "    <div class=\"form-group prov-inline\">\n" +
                     "      <label for=\"provinciaNascita\">Provincia di nascita</label>\n" +
-                    "      <input type=\"text\" class=\"form-control\" name=\"provinciaNascita\" id=\"provinciaNascita\">"+provNascita+"</input>\n" +
+                    "      <input type=\"text\" class=\"form-control\" name=\"provinciaNascita\" id=\"provinciaNascita\"value="+provNascita+">\n" +
                     "    </div>\n" +
                     "    <div class=\"form-group citta-inline\">\n" +
                     "      <label for=\"cittaNascita\">Citta' di nascita</label>\n" +
-                    "      <input type=\"text\" class=\"form-control\" name=\"cittaNascita\" id=\"cittaNascita\">"+cittaNascita+"</input>\n" +
+                    "      <input type=\"text\" class=\"form-control\" name=\"cittaNascita\" id=\"cittaNascita\"value="+cittaNascita+">\n" +
                     "    </div>\n" +
                     "    <div class=\"form-group email-inline\">\n" +
                     "      <label for=\"emailRichiedente\">Email richiedente</label>\n" +
-                    "      <input type=\"text\" class=\"form-control\" id=\"emailRichiedente\">"+emailRichiedente+"</input>\n" +
+                    "      <input type=\"text\" class=\"form-control\" id=\"emailRichiedente\"value="+emailRichiedente+">\n" +
                     "      <br>\n" +
                     "    </div>\n" +
                     "    <div class=\"form-group nascita-inline\">\n" +
                     "      <label for=\"dataNascita\">Data di nascita</label>\n" +
-                    "      <input type=\"date\" class=\"form-control\" name=\"dataNascita\" id=\"dataNascita\" required>"+dataNascita+"</input>\n" +
+                    "      <input type=\"date\" class=\"form-control\" name=\"dataNascita\" id=\"dataNascita\" value="+dataNascita+">\n" +
                     "      <small id=\"nascitaHelp\" class=\"form-text text-muted\">Formato gg/mm/aaaa</small>\n" +
                     "    </div>\n" +
                     "    <div class=\"form-group\">\n" +
                     "      <label for=\"codFisc\">Codice fiscale</label>\n" +
-                    "      <input type=\"text\" class=\"form-control\" name=\"codFis\" id=\"codFisc\">"+codFisc+"</input>\n" +
+                    "      <input type=\"text\" class=\"form-control\" name=\"codFis\" id=\"codFisc\"value="+codFisc+">\n" +
                     "    </div>\n" +
                     "    <br>\n" +
                     "    <legend>Dati personali</legend>\n" +
                     "    <div class=\"form-group\">\n" +
                     "      <label for=\"indirizzoResidenza\">Indirizzo di residenza</label>\n" +
-                    "      <input type=\"text\" class=\"form-control\" name=\"indirizzoResidenza\" id=\"indirizzoResidenza\" >"+indirizzoResidenza+"</input>\n" +
+                    "      <input type=\"text\" class=\"form-control\" name=\"indirizzoResidenza\" id=\"indirizzoResidenza\" value="+indirizzoResidenza+">\n" +
                     "    </div>\n" +
                     "    <div class=\"form-group prov-inline\">\n" +
                     "      <label for=\"provinciaResidenza\">Provincia</label>\n" +
-                    "      <input type=\"text\" class=\"form-control\"  name=\"provinciaResidenza\" id=\"provinciaResidenza\" aria-describedby=\"provinciaHelp\">"+provinciaResidenza+"</input>\n" +
+                    "      <input type=\"text\" class=\"form-control\"  name=\"provinciaResidenza\" id=\"provinciaResidenza\" aria-describedby=\"provinciaHelp\"value="+provinciaResidenza+">\n" +
                     "    </div>\n" +
                     "    <div class=\"form-group citta-inline\">\n" +
                     "      <label for=\"cittaResidenza\">Citta'</label>\n" +
-                    "      <input type=\"text\" class=\"form-control\" name=\"cittaResidenza\" id=\"cittaResidenza\">"+cittaResidenza+"</input>\n" +
+                    "      <input type=\"text\" class=\"form-control\" name=\"cittaResidenza\" id=\"cittaResidenza\"value="+cittaResidenza+">\n" +
                     "    </div>\n" +
                     "    <div class=\"form-group\">\n" +
                     "      <label for=\"telefono\">Recapito telefonico</label>\n" +
-                    "      <input type=\"text\" class=\"form-control\" name=\"telefono\" id=\"telefono\" >"+telefono+"</input>\n" +
+                    "      <input type=\"text\" class=\"form-control\" name=\"telefono\" id=\"telefono\" value="+telefono+">\n" +
                     "    </div>\n" +
                     "    <br>\n" +
                     "  </form>\n" +
@@ -220,7 +220,7 @@ public class PraticaController{
                     "    <legend>Dati organizzazione</legend>\n" +
                     "    <div class=\"form-group denominazione-inline\">\n" +
                     "      <label for=\"denominazione\">Denominazione sociale</label>\n" +
-                    "      <input type=\"text\" class=\"form-control\" id=\"denominazione\" >"+denominazione+"</input>\n" +
+                    "      <input type=\"text\" class=\"form-control\" id=\"denominazione\" value="+denominazione+">\n" +
                     "    </div>\n" +
                     "    <div class=\"form-group ragione-inline\">\n" +
                     "      <label for=\"ragioneSociale\">Ragione sociale</label>\n" +
@@ -235,34 +235,34 @@ public class PraticaController{
                     "    </div>\n" +
                     "    <div class=\"form-group piva-inline\">\n" +
                     "      <label for=\"piva\">Partita IVA</label>\n" +
-                    "      <input type=\"text\" class=\"form-control\" id=\"piva\">"+piva+"</input>\n" +
+                    "      <input type=\"text\" class=\"form-control\" id=\"piva\"value="+piva+">\n" +
                     "    </div>\n" +
                     "    <div class=\"form-group capitale-inline\">\n" +
                     "      <label for=\"piva\">Capitale</label>\n" +
-                    "      <input type=\"text\" class=\"form-control\" id=\"capitale\">"+capitale+"</input>\n" +
+                    "      <input type=\"text\" class=\"form-control\" id=\"capitale\"value="+capitale+">\n" +
                     "    </div>\n" +
                     "    <div class=\"form-group\">\n" +
                     "      <label for=\"email\">Email aziendale</label>\n" +
-                    "      <input type=\"email\" class=\"form-control\" id=\"email\">"+email+"</input>\n" +
+                    "      <input type=\"email\" class=\"form-control\" id=\"email\"value="+email+">\n" +
                     "    </div>\n" +
                     "    <br>\n" +
                     "    <!-- Sede legale -->\n" +
                     "    <legend>Sede legale</legend>\n" +
                     "    <div class=\"form-group stato-inline\">\n" +
                     "      <label for=\"stato\">Stato</label>\n" +
-                    "      <input type=\"text\" class=\"form-control\" id=\"stato\" >"+stato+"</input>\n" +
+                    "      <input type=\"text\" class=\"form-control\" id=\"stato\" value="+stato+">\n" +
                     "    </div>\n" +
                     "    <div class=\"form-group citta-inline\">\n" +
                     "      <label for=\"citta\">Citta</label>\n" +
-                    "      <input type=\"text\" class=\"form-control\" id=\"citta\">"+citta+"</input>\n" +
+                    "      <input type=\"text\" class=\"form-control\" id=\"citta\"value="+citta+">\n" +
                     "    </div>\n" +
                     "    <div class=\"form-group prov-inline\">\n" +
                     "      <label for=\"provincia\">Provincia</label>\n" +
-                    "      <input type=\"text\" class=\"form-control\" id=\"provincia\">"+provincia+"</input>\n" +
+                    "      <input type=\"text\" class=\"form-control\" id=\"provincia\"value="+provincia+">\n" +
                     "    </div>\n" +
                     "    <div class=\"form-group indirizzo-inline\">\n" +
                     "      <label for=\"indirizzo \">Indirizzo</label>\n" +
-                    "      <input type=\"text\" class=\"form-control\" id=\"indirizzo \">"+indirizzo+"</input>\n" +
+                    "      <input type=\"text\" class=\"form-control\" id=\"indirizzo \"value="+indirizzo+">\n" +
                     "    </div>\n" +
                     "    <br>\n" +
                     "  </form>\n" +
@@ -275,11 +275,11 @@ public class PraticaController{
 
 
             String home = System.getProperty("user.home");
+            String globalURL=home+File.separator+"Desktop"+File.separator+"happy500"+File.separator+"pratiche";
 
-            Path dbFolder = Paths.get(home+"Desktop"+File.separator+"happy500"+File.separator+"pratiche/");
+            Path dbFolder = Paths.get(globalURL);
 
             String error = "";
-            String globalURL=home+File.separator+"Desktop"+File.separator+"happy500"+File.separator+"pratiche";
 
             Boolean created = true;
             if (Files.notExists(dbFolder)) {
