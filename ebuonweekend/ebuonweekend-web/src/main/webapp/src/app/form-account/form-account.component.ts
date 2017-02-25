@@ -8,11 +8,6 @@ import {AccountServiceService} from "../account-service.service";
 })
 export class FormAccountComponent implements OnInit {
 
-  @Input() actualTab;
-
-  public setTabExt(){
-    this.tabs.currentPage = actualTab;
-  }
   public isSelected(id){
     if(id === this.tabs.currentPage){
       return true;

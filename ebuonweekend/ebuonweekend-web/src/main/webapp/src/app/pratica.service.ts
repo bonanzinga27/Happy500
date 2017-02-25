@@ -57,7 +57,6 @@ export class PraticaService {
       .map((res:Response) => res.json());
   }
 
-
   editOrganizzazione(user){
     let api = 'http://localhost:8080/editOrganizzazione?'+
       'id='+ Cookie.get('idOrganizzazione') +
@@ -79,5 +78,25 @@ export class PraticaService {
       .map((res: Response) => res.json()) // ...and calling .json() on the response to return data
       .catch((error:any) => Observable.throw(error.json().error || 'Server error')); //...errors if any
   }
-  
+
+  editPratica(user){
+    let api = 'http://localhost:8080/editPratica?'+
+      'id='+ Cookie.get('idRichiedente') +
+      '&tipologia='+user.nome+
+      '&importo='+user.importo+
+      '&completata='+'1'+
+      '&numDipendenti='+user.dipendenti+
+      '&durata='+user.durata+
+      '&iban='+'1000'+
+      '&descrizioneProgetto='+user.descrizione;
+
+    let bodyString = JSON.stringify(user); // Stringify payload
+    let headers = new Headers({ 'Content-Type': 'application/json' }); // ... Set content type to JSON
+    let options = new RequestOptions({ headers: headers }); // Create a request option
+
+    return this.http.post(api, bodyString, options) // ...using post request
+      .map((res: Response) => res.json()) // ...and calling .json() on the response to return data
+      .catch((error:any) => Observable.throw(error.json().error || 'Server error')); //...errors if any
+  }
+
 }

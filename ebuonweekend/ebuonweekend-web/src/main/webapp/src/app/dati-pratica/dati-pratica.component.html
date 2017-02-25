@@ -1,24 +1,24 @@
-<div class="jumbotron">
-  <form>
+<div class="jumbotron bg-white">
+  <form [formGroup]="praticaForm" (ngSubmit)="editPratica()" novalidate>
     <legend>Business plan</legend>
     <div class="form-group descrizione-inline">
       <label for="descrizione">Descrizione del progetto da finanziare</label>
-      <textarea class="form-control" id="descrizione" placeholder="Descrizione dettagliata"></textarea>
+      <textarea class="form-control" [(ngModel)]="dati.descrizione" formControlName="descrizione" name="descrizione" id="descrizione" placeholder="Descrizione dettagliata"></textarea>
       <small id="descrizioneHelp" class="form-text text-muted">Inserire minimo 400 caratteri.</small>
     </div>
     <div class="form-group importo-inline">
       <label for="importo">Importo richiesto</label>
-      <input type="text" class="form-control" id="importo" placeholder="Importo">
+      <input type="text" class="form-control" [(ngModel)]="dati.importo" formControlName="importo" name="importo" id="importo" placeholder="Importo">
       <small id="importoHelp" class="form-text text-muted">Importo espresso in euro</small>
     </div>
     <div class="form-group dipendenti-inline">
       <label for="dipendenti">Numero dipendenti</label>
-      <input type="text" class="form-control" id="dipendenti" placeholder="Dipendenti">
+      <input type="text" class="form-control" [(ngModel)]="dati.dipendenti" formControlName="dipendenti" name="dipendenti" id="dipendenti" placeholder="Dipendenti">
       <small id="dipendentiHelp" class="form-text text-muted">Dipendenti organizzazione</small>
     </div>
     <div class="form-group durata-inline">
       <label for="durata">Durata finanziamento</label>
-      <select class="form-control" id="durata">
+      <select class="form-control" [(ngModel)]="dati.durata" formControlName="durata" name="durata" id="durata">
         <option>12</option>
         <option>18</option>
         <option>24</option>
