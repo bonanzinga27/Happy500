@@ -1,0 +1,27 @@
+.jumbotron {
+  padding:24px 30px;
+  background-color: #ffffff;
+}
+textarea {
+  height:200px;
+  resize: none;
+}
+.descrizione-inline{
+  width:100%;
+  display: inline-block;
+}
+.importo-inline{
+  width:33%;
+  display: inline-block;
+}
+.durata-inline{
+  width:32%;
+  display: inline-block;
+}
+.dipendenti-inline{
+  width:32%;
+  display: inline-block;
+}
+label{
+  display:block;
+}

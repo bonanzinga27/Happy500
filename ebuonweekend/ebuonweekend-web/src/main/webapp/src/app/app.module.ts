@@ -20,6 +20,7 @@ import {RegisterService} from "./register.service";
 import { DatiPersonaliComponent } from './dati-personali/dati-personali.component';
 import { DatiOrganizzazioneComponent } from './dati-organizzazione/dati-organizzazione.component';
 import {LoginService} from "./login.service";
+import { DatiPraticaComponent } from './dati-pratica/dati-pratica.component';
 
 
 const appRoutes: Routes = [
@@ -41,7 +42,8 @@ const appRoutes: Routes = [
     CardComponent,
     ItemListComponent,
     DatiPersonaliComponent,
-    DatiOrganizzazioneComponent
+    DatiOrganizzazioneComponent,
+    DatiPraticaComponent
   ],
   imports: [
     BrowserModule,
