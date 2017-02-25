@@ -140,12 +140,14 @@ public class UtenteController{
 		try {
 			FileInputStream file = new FileInputStream(url);
 
+			File file2= new File(url);
+
 			MimetypesFileTypeMap mimeTypesMap = new MimetypesFileTypeMap();
 
 			// only by file name
-			String mimeType = mimeTypesMap.getContentType(url);
+			String mimeType = mimeTypesMap.getContentType(file2.getName());
 			response.setContentType(mimeType);
-			response.addHeader("Content-Disposition", " filename=\"" + "pratica \"");
+			response.addHeader("Content-Disposition", " filename=\"" + file2.getName());
 			ServletOutputStream out;
 			try {
 				out = response.getOutputStream();
