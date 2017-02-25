@@ -6,6 +6,7 @@ import it.uiip.digitalgarage.ebuonweekend.entity.TipoFinanziamento;
 public interface PraticaService{
 
     boolean insert(Pratica p);
+    boolean update(Pratica p);
 
 
 

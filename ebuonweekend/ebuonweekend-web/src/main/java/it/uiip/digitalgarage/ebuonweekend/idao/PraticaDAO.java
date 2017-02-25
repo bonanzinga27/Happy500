@@ -6,6 +6,7 @@ import it.uiip.digitalgarage.ebuonweekend.entity.TipoFinanziamento;
 public interface PraticaDAO{
 
     boolean insert(Pratica p);
+    boolean update(Pratica p);
 
     TipoFinanziamento[] getAllTipoFinanziamento();
 

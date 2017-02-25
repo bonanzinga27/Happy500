@@ -20,6 +20,11 @@ public class PraticaServiceImpl implements PraticaService {
     }
 
     @Override
+    public boolean update(Pratica p) {
+        return praticaDAO.update(p);
+    }
+
+    @Override
     public  boolean updatePathPratica(Long idPratica,String path){
         return praticaDAO.updatePathPratica(idPratica,path);
     }

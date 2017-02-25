@@ -61,6 +61,11 @@ public class PraticaDAOImpl implements PraticaDAO{
     }
 
     @Override
+    public boolean update(Pratica p) {
+        return false;
+    }
+
+    @Override
     public  boolean updatePathPratica(Long idPratica,String path){
         try {
             if(!DBController.connectDB(UPDATE_PATH))

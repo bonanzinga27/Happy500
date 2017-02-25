@@ -30,6 +30,7 @@ public class PraticaController{
     public GenericReturn<Pratica> insertPratica(@RequestParam(value="tipo", defaultValue="null") String tipo,
                                                 @RequestParam(value="email", defaultValue = "null") String email){
 
+        //ALL'INIZIO CREO NUOVA PRATICA CON NUOVO RICHIEDENTE E NUOVA ORGANIZZAZIONE
         Richiedente r = new Richiedente(0l, "", "", "", LocalDate.parse("1900-01-01"), "","", "", "", "", "", "", "", "", "");
         Organizzazione o = new Organizzazione(0, "", "", "", "", "", "", "", "", "");
 
@@ -44,6 +45,23 @@ public class PraticaController{
 
         }
         return new GenericReturn<>(null);
+    }
+
+    @CrossOrigin(origins = "http://localhost:4200")
+    @RequestMapping("/editPratica")
+    public GenericReturn<Boolean> editPratica(@RequestParam(value="id", defaultValue = "null") String id,
+                                              @RequestParam(value="tipologia", defaultValue = "null") String tipo,
+                                              @RequestParam(value="importo", defaultValue = "0") String importo,
+                                              @RequestParam(value="completata", defaultValue = "0") String completata,
+                                              @RequestParam(value="numDipendenti", defaultValue = "0") String numDip,
+                                              @RequestParam(value="durata", defaultValue = "0") String durata,
+                                              @RequestParam(value="iban", defaultValue = "null") String iban,
+                                              @RequestParam(value="descrizioneProgetto", defaultValue = "null") String descr){
+
+        Pratica p = new Pratica(Long.valueOf(id),tipo, Double.parseDouble(importo), LocalDate.now(), Integer.parseInt(completata), Integer.parseInt(numDip), Integer.parseInt(durata), iban, descr,"", 0, 0, "" );
+
+        return new GenericReturn<>(praticaService.update(p));
+
     }
 
 
