@@ -20,20 +20,22 @@ public class PraticaController{
 
     @CrossOrigin(origins = "http://localhost:4200")
     @RequestMapping("/insertPratica")
-    public GenericReturn<Boolean> insertPratica(@RequestParam(value="tipo", defaultValue="null") String tipologia,
-                                                @RequestParam(value="importo", defaultValue = "null") String importo,
+    public GenericReturn<Pratica> insertPratica(@RequestParam(value="tipo", defaultValue="null") String tipologia,
+                                                @RequestParam(value="importo", defaultValue = "0") String importo,
                                                 @RequestParam(value="completata", defaultValue = "0") String completata,
-                                                @RequestParam(value="numDip", defaultValue = "null") String numDip,
-                                                @RequestParam(value="durata", defaultValue = "null") String durata,
+                                                @RequestParam(value="numDip", defaultValue = "0") String numDip,
+                                                @RequestParam(value="durata", defaultValue = "0") String durata,
                                                 @RequestParam(value="iban", defaultValue = "null") String iban,
                                                 @RequestParam(value="descr", defaultValue = "null") String descr,
-                                                @RequestParam(value="idRich", defaultValue = "null") String idRich,
-                                                @RequestParam(value="idOrg", defaultValue = "null") String idOrg){
+                                                @RequestParam(value="idRich", defaultValue = "0") String idRich,
+                                                @RequestParam(value="idOrg", defaultValue = "0") String idOrg){
 
         Pratica p = new Pratica(0, tipologia, Double.parseDouble(importo), LocalDate.now(), Integer.parseInt(completata), Integer.parseInt(numDip), Integer.parseInt(durata), iban, descr, "null", Long.parseLong(idRich), Long.parseLong(idOrg));
 
-        return new GenericReturn<>(praticaService.insert(p));
-
+        if(praticaService.insert(p)){
+            return new GenericReturn<>(p);
+        }
+        return new GenericReturn<>(null);
     }
 
 
