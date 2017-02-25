@@ -33,6 +33,7 @@ import {AccountServiceService} from "./account-service.service";
 import {PraticaService} from "./pratica.service";
 import { AccountListComponent } from './account-list/account-list.component';
 import { ConfermaComponent } from './conferma/conferma.component';
+import {GestionePraticheService} from "./gestione-pratiche.service";
 
 const appRoutes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
@@ -81,7 +82,8 @@ const appRoutes: Routes = [
     LoginService,
     Cookie,
     PraticaService,
-    AccountServiceService
+    AccountServiceService,
+    GestionePraticheService
   ],
   bootstrap: [AppComponent]
 })

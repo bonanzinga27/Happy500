@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {GestionePraticheService} from "../gestione-pratiche.service";
+import {Cookie} from "ng2-cookies";
 
 @Component({
   selector: 'app-fin-completi',
@@ -7,12 +9,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FinCompletiComponent implements OnInit {
 
-  campiFinCompleti = [
-    {tipologia: 'Agricola', richiedente: 'Andrea' ,organizzazione: 'Andrea srl', data: '27/09/1993', pdf: 'link download'},
-    {tipologia: 'Privata', richiedente: 'Andrea1' ,organizzazione: 'Andrea1 srl', data: '27/09/1993', pdf: 'link1 download'},
-    {tipologia: 'Industriale', richiedente: 'Andrea2' ,organizzazione: 'Andrea2 srl', data: '27/09/1993', pdf: 'link 2download'},
-  ];
-  constructor() { }
+  campiFinCompleti = [];
+
+  getPraticheCompletate(){
+    this.gestionePratiche.getPraticheCompletate(Cookie.get('email'))
+      .subscribe(risposta => {
+        if (risposta.returnObject != null){
+          this.campiFinCompleti = JSON.parse(JSON.stringify(risposta.returnObject));
+        }else{
+          console.log("errore");
+        }
+      });
+  }
+
+  constructor(private gestionePratiche: GestionePraticheService) {
+    this.getPraticheCompletate();
+  }
 
   ngOnInit() {
   }

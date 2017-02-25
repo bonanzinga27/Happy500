@@ -14,10 +14,10 @@
       <tbody>
       <tr *ngFor="let campi of campiFinCompleti">
         <td>{{campi.tipologia}}</td>
-        <td>{{campi.richiedente}}</td>
-        <td>{{campi.organizzazione}}</td>
-        <td>{{campi.data}}</td>
-        <td><a href="{{campi.pdf}}" >PDF</a></td>
+        <td>{{campi.codFiscRich}}</td>
+        <td>{{campi.denomOrg}}</td>
+        <td>{{campi.dataRichiesta.dayOfMonth + "/" + campi.dataRichiesta.monthValue + "/" + campi.dataRichiesta.year }}</td>
+        <td><a href="{{campi.pdfPath}}">Scarica PDF</a></td>
       </tr>
       </tbody>
     </table>
