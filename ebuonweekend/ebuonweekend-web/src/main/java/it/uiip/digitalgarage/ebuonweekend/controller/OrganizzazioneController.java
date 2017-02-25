@@ -57,5 +57,14 @@ public class OrganizzazioneController {
 
     }
 
+    @CrossOrigin(origins = "http://localhost:4200")
+    @RequestMapping("/getOrganizzazione")
+    public GenericReturn<Organizzazione> getOrganizzazione(@RequestParam(value = "id", defaultValue = "null") String id){
+        if(!id.equals("null")){
+            return new GenericReturn<>(organizzazioneService.selectById(id));
+        }
+        return new GenericReturn<>(null);
+    }
+
 
 }

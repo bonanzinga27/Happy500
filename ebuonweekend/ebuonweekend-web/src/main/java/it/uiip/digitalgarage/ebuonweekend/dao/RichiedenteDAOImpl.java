@@ -16,7 +16,7 @@ public class RichiedenteDAOImpl implements RichiedenteDAO {
 
 
     private static final String INSERT = "INSERT INTO richiedente (nome, cognome,codFisc, dataNascita, cittaNascita, provNascita, telefono, cittaResidenza, provResidenza,indirizzoResidenza,emailRichiedente,cartaIdentitaPath,codFiscPath, sesso) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?)";
-    private static final String UPDATE = "UPDATE richiedente SET nome=?, cognome=?, codFisc=? , dataNascita=?, cittaNascita=? ,provinciaNascita=?, telefono=?, cittaResidenza=?, provinciaResidenza=?, indirizzoResidenza=?, emailRichiedente=?, cartaIdentitaPath=?, codFiscaPath=? WHERE id=?";
+    private static final String UPDATE = "UPDATE richiedente SET nome=?, cognome=?, codFisc=? , dataNascita=?, cittaNascita=? ,provinciaNascita=?, telefono=?, cittaResidenza=?, provinciaResidenza=?, indirizzoResidenza=?, emailRichiedente=?, cartaIdentitaPath=?, codFiscPath=? WHERE id=?";
     private static final String DELETE = "DELETE FROM richiedente WHERE id=?";
     private static final String SELECT_BY_ID = "SELECT * FROM richiedente WHERE id=?";
 

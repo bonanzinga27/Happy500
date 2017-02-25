@@ -7,5 +7,6 @@ public interface OrganizzazioneDAO {
 
     boolean insert(Organizzazione o);
     boolean update(Organizzazione o);
+    Organizzazione selectById(String id);
 
 }

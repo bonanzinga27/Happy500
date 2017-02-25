@@ -21,4 +21,9 @@ public class OrganizzazioneServiceImpl implements OrganizzazioneService {
     public boolean update(Organizzazione o) {
         return organizzazioneDAO.update(o);
     }
+
+    @Override
+    public Organizzazione selectById(String id) {
+        return organizzazioneDAO.selectById(id);
+    }
 }
