@@ -1,3 +1,22 @@
-<p>
-  fin-incompleti works!
-</p>
+<div class="jumbotron">
+  <legend>Completa le richieste di finanziamento in sospeso cliccando sui link qui sotto.</legend>
+  <div class="table-responsive">
+    <table class="table">
+      <thead>
+      <tr>
+        <th>Tipo</th>
+        <th>Finanziamento da completare</th>
+        <th></th>
+        <th></th>
+        <th></th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let campi of campiFinInSospeso">
+        <td>{{campi.tipologia}}</td>
+        <td><a href="{{campi.redirect}}">Clicca qui per tornare alla pratica in sospeso</a></td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
